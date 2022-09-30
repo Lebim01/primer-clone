@@ -70,4 +70,6 @@ export const accountMenu: IMenuItem[] = [
   },
 ]
 
+export const pageNotFound: IMenuItem = { icon: null, name: "Page not found", path: "/404" }
+
 export const ALL_MENUS = [...primerMenu, ...supportMenu, ...accountMenu]

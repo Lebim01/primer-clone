@@ -4,6 +4,7 @@ interface IFlowCheckout {
   action: string;
   created_at: Date;
   updated_at: Date;
+  workflow_uuid?: string;
 }
 
 interface IFlowPayment {
@@ -12,4 +13,5 @@ interface IFlowPayment {
   action: string;
   created_at: Date;
   updated_at: Date;
+  workflow_uuid?: string;
 }

@@ -13,7 +13,10 @@ module.exports = {
       colors: {
         primary: "#362ff9",
         "primary-thin": "#8682fb"
-      }
+      },
+      transitionProperty: {
+        'width': 'width'
+      },
     },
   },
   plugins: [],

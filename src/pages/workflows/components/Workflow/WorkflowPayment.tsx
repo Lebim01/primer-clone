@@ -19,16 +19,20 @@ const WorkflowPayment = (props: Props) => {
       <div className="text-center">
         <span>{props.data.name}</span>
       </div>
-      <div className="flex w-[250px] rounded border p-2 hover:cursor-pointer hover:bg-neutral-100">
-        <div className="flex flex-1 flex-col">
-          <span className="text-xs text-neutral-500">PAYMENTS</span>
-          <span className="text-sm">{props.data.action}</span>
-        </div>
-        <div className="flex flex-col">
-          <span className="text-xxs text-neutral-500">CONDITION</span>
-          <span></span>
-        </div>
-      </div>
+      <Link href={`/workflows/[uuid]`} as={`/workflows/${props.data.workflow_uuid}`}>
+        <a>
+          <div className="flex w-[250px] rounded border p-2 hover:cursor-pointer hover:bg-neutral-100">
+            <div className="flex flex-1 flex-col">
+              <span className="text-xs text-neutral-500">PAYMENTS</span>
+              <span className="text-sm">{props.data.action}</span>
+            </div>
+            <div className="flex flex-col">
+              <span className="text-xxs text-neutral-500">CONDITION</span>
+              <span></span>
+            </div>
+          </div>
+        </a>
+      </Link>
       <div className="flex border-t border-gray-300 px-2 pt-3">
         <div className="flex gap-2">
           <div>

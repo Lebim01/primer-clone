@@ -1,3 +1,4 @@
+import useCollapse from "../useCollapse";
 import ItemMenu from "./ItemMenu";
 
 type Props = {
@@ -6,10 +7,12 @@ type Props = {
 }
 
 const SubMenu = (props: Props) => {
+  const collapse = useCollapse()
+
   return (
-    <div className="px-4">
-      <div className="mb-2 text-xxs font-bold">{props.title}</div>
-      <div className="flex flex-col gap-y-2">
+    <div className={collapse ? "flex justify-center" : "px-4"}>
+      {!collapse && <div className="mb-2 text-xxs font-bold">{props.title}</div>}
+      <div className={`flex flex-col ${collapse ? "gap-y-6" : "gap-y-2"}`}>
         {props.menus.map((item, index) => 
           <ItemMenu {...item} key={index} />
         )}

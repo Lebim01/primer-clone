@@ -1,12 +1,11 @@
 import Link from "next/link";
 import React from "react";
 import { BsHouseDoor } from "react-icons/bs"
+import { useHeaderContext } from "./header.context";
 
-type Props = {
-  path: IMenuItem[];
-}
+const HeaderBreadcrumb = () => {
+  const { path } = useHeaderContext()
 
-const HeaderBreadcrumb = (props: Props) => {
   return (
     <div className="flex items-center gap-3 border-b p-6">
       <Link href="/workflows" className="hover:cursor-pointer">
@@ -15,12 +14,14 @@ const HeaderBreadcrumb = (props: Props) => {
         </a>
       </Link>
       {"/"}
-      {props.path.map((item, index) => {
-        const isLast = Number(index)+1 == props.path.length
+      {path.map((item, index) => {
+        const isLast = Number(index)+1 == path.length
         return (
           <React.Fragment key={index}>
-            <Link href={item.path}>
-              <span className={`${isLast ? "text-black" : "text-neutral-500"} font-medium hover:cursor-pointer hover:text-black`}>{item.name}</span>
+            <Link href={item.path} as={item.path}>
+              <a>
+                <span className={`${isLast ? "text-black" : "text-neutral-500"} font-medium hover:cursor-pointer hover:text-black`}>{item.name}</span>
+              </a>
             </Link>
             {!isLast && <span className="text-neutral-500">{'>'}</span>}
           </React.Fragment>

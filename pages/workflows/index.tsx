@@ -1,5 +1,3 @@
-import LayoutBody from "@src/layout/Body"
-import Layout from "@src/layout/Layout"
 import CatalogGroup from "@src/pages/workflows/components/CatalogGroup"
 import StatusToggle from "@src/pages/workflows/components/StatusToggle"
 import WorkflowApp from "@src/pages/workflows/components/Workflow/WorkflowApp"
@@ -36,27 +34,25 @@ const Workflows = () => {
   }, [status])
 
   return (
-    <Layout>
-      <LayoutBody>
-        <h3 className="mb-6 text-3xl">Workflows</h3>
-        <StatusToggle />
-        <CatalogGroup title="Checkout">
-          {checkouts.data?.map((workflow) => 
-            <WorkflowCheckout data={workflow} key={workflow.uuid} />
-          )}
-        </CatalogGroup>
-        <CatalogGroup title="Payments">
-          {payments.data?.map((workflow) => 
-            <WorkflowPayment data={workflow} key={workflow.uuid} />
-          )}
-        </CatalogGroup>
-        <CatalogGroup title="Apps">
-          {apps.data?.map((workflow) => 
-            <WorkflowApp data={workflow} key={workflow.uuid} />
-          )}
-        </CatalogGroup>
-      </LayoutBody>
-    </Layout>
+    <>
+      <h3 className="mb-6 text-3xl">Workflows</h3>
+      <StatusToggle />
+      <CatalogGroup title="Checkout">
+        {checkouts.data?.map((workflow) => 
+          <WorkflowCheckout data={workflow} key={workflow.uuid} />
+        )}
+      </CatalogGroup>
+      <CatalogGroup title="Payments">
+        {payments.data?.map((workflow) => 
+          <WorkflowPayment data={workflow} key={workflow.uuid} />
+        )}
+      </CatalogGroup>
+      <CatalogGroup title="Apps">
+        {apps.data?.map((workflow) => 
+          <WorkflowApp data={workflow} key={workflow.uuid} />
+        )}
+      </CatalogGroup>
+    </>
   )
 }
 
