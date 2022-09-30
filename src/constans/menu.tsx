@@ -1,59 +1,73 @@
 import { BsFillGrid1X2Fill, BsCode, BsFolderCheck, BsBarChart, BsWallet, BsCart, BsPlusLg, BsGift, BsBook, BsGearFill, BsPerson } from "react-icons/bs"
 import { BiNetworkChart } from "react-icons/bi"
 
-export const primerMenu = [
+export const primerMenu: IMenuItem[] = [
   {
     icon: <BsFillGrid1X2Fill />,
-    name: "Snapshot"
+    name: "Snapshot",
+    path: "/snapshot"
   },
   {
     icon: <BsPlusLg />,
-    name: "Connections"
+    name: "Connections",
+    path: "/connections"
   },
   {
     icon: <BiNetworkChart />,
-    name: "Workflows"
+    name: "Workflows",
+    path: "/workflows"
   },
   {
     icon: <BsCart />,
-    name: "Checkout"
+    name: "Checkout",
+    path: "/checkout"
   },
   {
     icon: <BsWallet />,
-    name: "Payments"
+    name: "Payments",
+    path: "/payments"
   },
   {
     icon: <BsBarChart />,
-    name: "Analytics"
+    name: "Analytics",
+    path: "/analytics"
   },
   {
     icon: <BsFolderCheck />,
-    name: "Reconciliation"
+    name: "Reconciliation",
+    path: "/reconciliation"
   },
   {
     icon: <BsCode />,
-    name: "Developers"
+    name: "Developers",
+    path: "/developers"
   }
 ]
 
-export const supportMenu = [
+export const supportMenu: IMenuItem[] = [
   {
     icon: <BsBook />,
-    name: "API reference"
+    name: "API reference",
+    path: "/api-reference"
   },
   {
     icon: <BsGift />,
-    name: "What's new?"
+    name: "What's new?",
+    path: "/whats-new"
   },
 ]
 
-export const accountMenu = [
+export const accountMenu: IMenuItem[] = [
   {
     icon: <BsPerson />,
-    name: "Profile"
+    name: "Profile",
+    path: "/profile"
   },
   {
     icon: <BsGearFill />,
-    name: "Settings"
+    name: "Settings",
+    path: "/settings"
   },
 ]
+
+export const ALL_MENUS = [...primerMenu, ...supportMenu, ...accountMenu]

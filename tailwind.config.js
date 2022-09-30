@@ -9,6 +9,9 @@ module.exports = {
       fontSize: {
         'xxs': '.65rem',
         'xs': '.75rem',
+      },
+      colors: {
+        primary: "#362ff9"
       }
     },
   },
