@@ -1,0 +1,1 @@
+type TStatus = "active" | "inactive"

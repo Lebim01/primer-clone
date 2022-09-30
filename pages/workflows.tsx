@@ -2,7 +2,9 @@ import LayoutBody from "@src/layout/Body"
 import Layout from "@src/layout/Layout"
 import CatalogGroup from "@src/pages/workflows/components/CatalogGroup"
 import StatusToggle from "@src/pages/workflows/components/StatusToggle"
-import Workflow from "@src/pages/workflows/components/Workflow/Workflow"
+import WorkflowApp from "@src/pages/workflows/components/Workflow/WorkflowApp"
+import WorkflowCheckout from "@src/pages/workflows/components/Workflow/WorkflowCheckout"
+import WorkflowPayment from "@src/pages/workflows/components/Workflow/WorkflowPayment"
 import WorkflowListContextProvider, { useWorkflowListContext } from "@src/pages/workflows/workflows.list.context"
 import { fetcherGET } from "@src/services/fetchers"
 import { useEffect } from "react"
@@ -11,13 +13,13 @@ import useSWR from 'swr'
 const Workflows = () => {
   const { status: [status] } = useWorkflowListContext()
 
-  const checkouts = useSWR<IWorkflow[]>('/api/workflow?type=checkout', fetcherGET<IWorkflow[]>({ status }), {
+  const checkouts = useSWR<IFlowCheckout[]>('/api/flow/checkout', fetcherGET<IFlowCheckout[]>({ status }), {
     revalidateOnMount: false,
   })
-  const payments = useSWR<IWorkflow[]>('/api/workflow?type=payment', fetcherGET<IWorkflow[]>({ status }), {
+  const payments = useSWR<IFlowPayment[]>('/api/flow/payment', fetcherGET<IFlowPayment[]>({ status }), {
     revalidateOnMount: false
   })
-  const apps = useSWR<IWorkflow[]>('/api/workflow?type=app', fetcherGET<IWorkflow[]>({ status }), {
+  const apps = useSWR<IApp[]>('/api/app?type=app', fetcherGET<IApp[]>({ status }), {
     revalidateOnMount: false
   })
 
@@ -40,17 +42,17 @@ const Workflows = () => {
         <StatusToggle />
         <CatalogGroup title="Checkout">
           {checkouts.data?.map((workflow) => 
-            <Workflow data={workflow} key={workflow.uuid} />
+            <WorkflowCheckout data={workflow} key={workflow.uuid} />
           )}
         </CatalogGroup>
         <CatalogGroup title="Payments">
           {payments.data?.map((workflow) => 
-            <Workflow data={workflow} key={workflow.uuid} />
+            <WorkflowPayment data={workflow} key={workflow.uuid} />
           )}
         </CatalogGroup>
         <CatalogGroup title="Apps">
           {apps.data?.map((workflow) => 
-            <Workflow data={workflow} key={workflow.uuid} />
+            <WorkflowApp data={workflow} key={workflow.uuid} />
           )}
         </CatalogGroup>
       </LayoutBody>

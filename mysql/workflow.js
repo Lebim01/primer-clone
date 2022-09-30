@@ -4,7 +4,8 @@ const getWorkflows = async (connection, type, status = "active") => {
     const SQL = `
       SELECT *
       FROM workflow
-      WHERE workflow.status = ? AND workflow.type = ?
+      WHERE workflow.status = ?
+      ORDER BY created_at
     `
     const results = await connection.awaitQuery(SQL, [status, type]);
     return results || []

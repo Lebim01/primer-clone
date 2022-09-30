@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { BsArrowRight } from 'react-icons/bs'
 import { motion } from 'framer-motion'
+import moment from "moment"
 
 type Props = {
-  data: IWorkflow;
+  data: IFlowCheckout;
 }
 
-const Workflow = (props: Props) => {
+const WorkflowCheckout = (props: Props) => {
   return (
     <motion.div 
       animate={{ opacity: 1 }} 
@@ -18,10 +19,10 @@ const Workflow = (props: Props) => {
       <div className="text-center">
         <span>{props.data.name}</span>
       </div>
-      <div className="flex w-[250px] rounded border p-2">
+      <div className="flex w-[250px] rounded border p-2 hover:cursor-pointer hover:bg-neutral-100">
         <div className="flex flex-1 flex-col">
-          <span className="text-xs text-neutral-500">{props.data.principal_node?.type.toUpperCase()}</span>
-          <span className="text-sm">Create Payment</span>
+          <span className="text-xs text-neutral-500">CHECKOUT</span>
+          <span className="text-sm">{props.data.action}</span>
         </div>
         <div className="flex flex-col">
           <span className="text-xxs text-neutral-500">CONDITION</span>
@@ -34,8 +35,8 @@ const Workflow = (props: Props) => {
             <img src="//api.lorem.space/image/face?w=150&h=150" className="h-4 w-4 rounded-full" />
           </div>
           <div className="flex flex-col">
-            <span className="text-xxs font-medium">PUBLISHED BY </span>
-            <span className="text-xxs text-neutral-400">Updated 1 minute ago</span>
+            <span className="text-xxs font-medium">Published by <span className="underline">Victor Alvarez</span></span>
+            <span className="text-xxs text-neutral-400">Updated {moment.duration(moment().diff(moment(props.data.updated_at))).humanize()} ago</span>
           </div>
         </div>
       </div>
@@ -50,4 +51,4 @@ const Workflow = (props: Props) => {
   )
 }
 
-export default Workflow
+export default WorkflowCheckout
