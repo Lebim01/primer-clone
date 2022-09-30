@@ -14,7 +14,7 @@ const LayoutBody = (props: Props) => {
   return (
     <div className="flex w-full flex-col">
       <HeaderBreadcrumb path={menu ? [menu] : [{ icon: "", name: "Page not found", path: "/404" }]} />
-      <div>
+      <div className="p-8">
         {props.children}
       </div>
     </div>

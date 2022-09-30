@@ -11,7 +11,8 @@ module.exports = {
         'xs': '.75rem',
       },
       colors: {
-        primary: "#362ff9"
+        primary: "#362ff9",
+        "primary-thin": "#8682fb"
       }
     },
   },
