@@ -1,6 +1,7 @@
 interface IApp {
   uuid: string;
   icon: string;
+  icon_component?: ReactNode;
   name: string;
   status: TStatus;
   created_at: Date;
@@ -13,4 +14,9 @@ interface IAppMethod {
   app_uuid: string;
   name: string;
   type: TMethodType;
+  node_type: NodeType;
+}
+
+interface IAppMethodFull extends IAppMethod {
+  app: IApp;
 }

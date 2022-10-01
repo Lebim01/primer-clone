@@ -1,14 +1,13 @@
 import { useState } from "react"
 import { TbLayoutSidebarRightCollapse, TbLayoutSidebarLeftCollapse } from "react-icons/tb"
-import Applications from "./SubMenus/Applications"
-import { useWorkflowBuildSidemenuContext } from "./workflow.build.sidemenu.context"
+import Applications from "./SubMenus/Applications/Applications"
+import Conditions from "./SubMenus/Conditions/Conditions"
 
 const WorkflowAppsSideMenu = () => {
   const [open, setOpen] = useState(false)
-  const { apps } = useWorkflowBuildSidemenuContext()
 
   return (
-    <div className={`border-r border-gray-200 bg-white ${open ? "w-[280px]" : "w-[50px]"} flex flex-col items-center overflow-auto p-4 transition-width`}>
+    <div className={`border-r border-gray-200 bg-white ${open ? "w-[280px]" : "w-[50px]"} flex flex-col items-center gap-4 overflow-auto p-4 transition-width`}>
       <span className={`${open ? "self-end" : ""} text-neutral-400 transition-all hover:cursor-pointer hover:text-black`}>
         {open
           ? <TbLayoutSidebarLeftCollapse size={20} onClick={() => setOpen(false)} />
@@ -17,6 +16,7 @@ const WorkflowAppsSideMenu = () => {
       </span>
       {open &&
         <>
+          <Conditions />
           <Applications />
         </>
       }

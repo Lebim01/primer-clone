@@ -8,9 +8,9 @@ type Props = {
 
 const LayoutBody = (props: Props) => {
   return (
-    <div className="flex w-full flex-col">
+    <div className="flex max-h-screen w-full flex-col overflow-hidden">
       <HeaderBreadcrumb />
-      <div className="h-full w-full">
+      <div className="h-full w-full overflow-auto">
         {props.children}
       </div>
     </div>

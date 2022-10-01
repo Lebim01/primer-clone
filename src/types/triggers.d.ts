@@ -1,1 +1,1 @@
-type TMethodType = "checkout" | "payment"
+type TMethodType = "checkout" | "payment" | "condition"

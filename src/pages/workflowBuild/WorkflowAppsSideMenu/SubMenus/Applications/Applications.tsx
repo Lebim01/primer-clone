@@ -1,14 +1,33 @@
 import type { ReactNode } from "react"
 import { useState } from "react"
-import { useWorkflowBuildSidemenuContext } from "../workflow.build.sidemenu.context"
 import { BiFilterAlt } from "react-icons/bi"
 import { BsChevronDown, BsChevronUp, BsArrowRightShort } from "react-icons/bs"
 import { AnimatePresence, motion } from "framer-motion"
 import BadgeAppActions from "@src/components/UI/BadgeAppActions"
+import { uuid } from "uuidv4"
+import { useWorkflowBuildContext } from "@src/pages/workflowBuild/workflow.build.context"
+import { useWorkflowBuildSidemenuContext } from "../../workflow.build.sidemenu.context"
 
 type CollapsableItemProps = {
   icon: ReactNode;
   body: ReactNode;
+  app: IApp;
+}
+
+const TriggerAction = ({ data }: { data: IAppMethodFull }) => {
+  const { addNewNode } = useWorkflowBuildContext()
+
+  return (
+    <div className="relative pr-1" onClick={() => addNewNode(data)}>
+      <div className="flex flex-col rounded-md border py-2 px-4 transition-all hover:cursor-pointer hover:bg-hover-card">
+        <span className="text-xxs text-neutral-500">PAYMENTS</span>
+        <span className="text-sm font-bold">{data.name}</span>
+      </div>
+      <div className="absolute bottom-2 -right-1 flex h-5 w-5 items-center justify-center rounded-full border-r bg-white">
+        <BsArrowRightShort />
+      </div>
+    </div>
+  )
 }
 
 const CollapsableItem = (props: CollapsableItemProps) => {
@@ -34,21 +53,32 @@ const CollapsableItem = (props: CollapsableItemProps) => {
         <AnimatePresence initial={false} mode="popLayout">
           {open &&
             <motion.div className="flex flex-col gap-3 overflow-hidden p-3" initial={{ scaleY: "10%", translateY: "-50%", maxHeight: 0 }} animate={{ scaleY: "100%", translateY: "0%", maxHeight: "100%" }} exit={{ scaleY: "0%", translateY: "-45%", maxHeight: 0 }}>
-              
-              <div className="flex flex-col rounded-md border py-2 px-4 transition-all hover:cursor-pointer hover:bg-hover-card">
-                <span className="text-xxs text-neutral-500">PAYMENTS</span>
-                <span className="text-sm font-bold">Authorized User</span>
-              </div>
-
-              <div className="relative pr-1">
-                <div className="flex flex-col rounded-md border py-2 px-4 transition-all hover:cursor-pointer hover:bg-hover-card">
-                  <span className="text-xxs text-neutral-500">PAYMENTS</span>
-                  <span className="text-sm font-bold">Create Payment</span>
-                </div>
-                <div className="absolute bottom-2 -right-1 flex h-5 w-5 items-center justify-center rounded-full border-r bg-white">
-                  <BsArrowRightShort />
-                </div>
-              </div>
+              <TriggerAction 
+                data={{
+                  name: "Authorize Payment",
+                  app: {
+                    ...props.app,
+                    icon_component: <img src={props.app.icon} className="h-4 w-4" />
+                  },
+                  app_uuid: props.app.uuid,
+                  type: "checkout",
+                  uuid: uuid(),
+                  node_type: "authorizePayment"
+                }} 
+              />
+              <TriggerAction 
+                data={{
+                  name: "Authorize User",
+                  app: {
+                    ...props.app,
+                    icon_component: <img src={props.app.icon} className="h-4 w-4" />
+                  },
+                  app_uuid: props.app.uuid,
+                  type: "checkout",
+                  uuid: uuid(),
+                  node_type: "authorizeUser"
+                }} 
+              />
             </motion.div>
           }
         </AnimatePresence>
@@ -73,6 +103,7 @@ const Applications = () => {
           <CollapsableItem 
             key={app.uuid} 
             icon={<img src={app.icon} className="h-5 w-5" />}
+            app={app}
             body={
               <div className="flex gap-1">
                 {app.name}

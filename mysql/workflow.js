@@ -45,7 +45,8 @@ const getWorkflowNodes = async (connection, uuid) => {
           ...node,
           id: node.node_id,
           position: JSON.parse(node.position),
-          data: JSON.parse(node.data)
+          data: JSON.parse(node.data),
+          draggable: false
         }))
       : []
     

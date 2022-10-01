@@ -1,9 +1,8 @@
 // @ts-nocheck
-import { TiFlowSwitch } from "react-icons/ti"
 import { Handle } from 'reactflow';
 import NodeContainer from "./NodeContainer";
 
-const NodeCondition = (props: NodeProps) => {
+const NodeAuthorizeUser = (props: NodeProps) => {
   return (
     <>
       <Handle
@@ -23,8 +22,9 @@ const NodeCondition = (props: NodeProps) => {
         />
       }
       <NodeContainer 
-        topTitle="CONDITION" 
-        icon={<div className="text-md  rounded-full bg-blue-500 p-1 text-white"><TiFlowSwitch /></div>}
+        topTitle="PAYMENTS" 
+        title="Authorize User"
+        icon={props.data.app_icon}
       >
 
       </NodeContainer>
@@ -32,4 +32,4 @@ const NodeCondition = (props: NodeProps) => {
   )
 }
 
-export default NodeCondition
+export default NodeAuthorizeUser

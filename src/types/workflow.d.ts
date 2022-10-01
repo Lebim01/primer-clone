@@ -20,6 +20,7 @@ interface IWorkflowNode {
   }
   data: any;
   type?: string;
+  node_type: NodeType;
 }
 
 interface IWorkflow {

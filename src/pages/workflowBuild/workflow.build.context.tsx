@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useHeaderContext } from "@src/components/HeaderBreadcrumb/header.context";
 import { ALL_MENUS } from "@src/constans/menu";
 import { fetcherGET } from "@src/services/fetchers";
@@ -5,8 +6,9 @@ import { useRouter } from "next/router";
 import { createContext, useContext, ReactNode, useMemo, useEffect, useCallback } from "react";
 import { useNodesState, useEdgesState, addEdge } from "reactflow"
 import useSWR from "swr";
+import { uuid } from "uuidv4"
 
-import type { OnNodesChange, OnEdgesChange } from "reactflow"
+import type { OnNodesChange, OnEdgesChange, Node, Edge } from "reactflow"
 
 type Props = {
   children: ReactNode;
@@ -18,6 +20,7 @@ interface IWorkflowBuildContext {
   onNodesChange: OnNodesChange,
   onEdgesChange: OnEdgesChange,
   onConnect: (params: any) => void;
+  addNewNode: (method: IAppMethodFull) => void;
 }
 
 const WorkflowBuildContext = createContext<IWorkflowBuildContext>({
@@ -25,7 +28,8 @@ const WorkflowBuildContext = createContext<IWorkflowBuildContext>({
   edges: [],
   onNodesChange: () => {},
   onEdgesChange: () => {},
-  onConnect: () => {}
+  onConnect: () => {},
+  addNewNode: () => {},
 })
 
 const WorkflowBuildContextProvider = (props: Props) => {
@@ -68,7 +72,45 @@ const WorkflowBuildContextProvider = (props: Props) => {
 
   const onConnect = useCallback((params: any) => setEdges((els) => addEdge(params, els)), []);
   
+  const addNewNode = (method: IAppMethodFull) => {
+    const lastNode = nodes[nodes.length-1]
+    const el = document.querySelector(`[data-id=${lastNode.id}]`)!
+    
+    const newPosition = {
+      y: lastNode.position.y + (el?.clientHeight * 0.8),
+      x: lastNode.position.x + el?.clientWidth + 80,
+    }
 
+    const newNode: Node<any> = {
+      id: `node-${uuid()}`,
+      data: {
+        app_icon: method.app.icon_component
+      },
+      type: method.node_type,
+      position: newPosition,
+      draggable: false,
+      targetPosition: 'left',
+      sourcePosition: "none",
+      last: true
+    }
+
+    setNodes((nodes) => {
+      const _nodes = [...nodes]
+      _nodes[_nodes.length-1].sourcePosition = "right"
+      _nodes.push(newNode)
+      return _nodes
+    })
+
+    const newEdge: Edge = {
+      id: uuid(),
+      source: lastNode.id,
+      target: newNode.id,
+      type: 'smoothstep',
+    }
+
+    setEdges([...edges, newEdge])
+  }
+  
   return (
     <WorkflowBuildContext.Provider 
       value={{
@@ -76,7 +118,8 @@ const WorkflowBuildContextProvider = (props: Props) => {
         edges,
         onNodesChange,
         onEdgesChange,
-        onConnect
+        onConnect,
+        addNewNode,
       }}
     >
       {props.children}
