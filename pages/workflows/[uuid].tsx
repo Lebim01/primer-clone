@@ -16,7 +16,7 @@ const WorkflowEdit = () => {
   const router = useRouter()
   const { data: workflow } = useSWR<IWorkflow>(`/api/workflow/${router.query.uuid}`, fetcherGET<IWorkflow>({}))
   const { data: initialNodes } = useSWR<IWorkflowNode[]>(`/api/workflow/${router.query.uuid}/nodes`, fetcherGET<IWorkflowNode[]>({}))
-  const { setPath } = useHeaderContext()
+  const { setPath, setActionButtons } = useHeaderContext()
 
   const path: IMenuItem[] = useMemo(() => {
     const workflows: IMenuItem = ALL_MENUS.find(r => r.path == "/workflows")!
@@ -25,15 +25,48 @@ const WorkflowEdit = () => {
   }, [workflow, router.asPath])
 
   useEffect(() => {
-    setPath(path)
+    setActionButtons(
+      <>
+       <button className="rounded border bg-black px-4 py-1 text-lg text-white">
+         Publish
+       </button>
+      </>
+    )
   }, [path, setPath])
 
   useEffect(() => {
-    setNodes(initialNodes || [])
+    setPath(path)
+  }, [])
+
+  useEffect(() => {
+    //setNodes(initialNodes || [])
   }, [initialNodes])
 
   // @ts-ignore:next-line
-  const [nodes, setNodes, onNodesChange] = useNodesState([]);
+  const [nodes, setNodes, onNodesChange] = useNodesState<any>([
+    {
+      "position": {
+        "x": 0,
+        "y": 80
+      },
+      "data": {
+        "paymentMethod": "visa"
+      },
+      "type": "createPayment",
+      "id": "node-09465e4e-bbb4-4e73-9b6f-8f9e9afa5809"
+    },
+    {
+      "position": {
+        "x": 120,
+        "y": 80
+      },
+      "data": {
+        "paymentMethod": "visa"
+      },
+      "type": "createPayment",
+      "id": "node-09465e4e-bbb4-4e73-9b6f-8f9e9afa5855"
+    }
+  ]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const onConnect = useCallback((params: any) => setEdges((els) => addEdge(params, els)), []);
 

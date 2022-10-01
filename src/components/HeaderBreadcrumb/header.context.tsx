@@ -9,17 +9,23 @@ type Props = {
 interface IHeaderContext {
   path: IMenuItem[];
   setPath: (path: IMenuItem[]) => void;
+
+  actionButtons: ReactNode;
+  setActionButtons: (ActionButtons: ReactNode) => void;
 }
 
 const HeaderContext = createContext<IHeaderContext>({
   path: [],
-  setPath: () => {}
+  setPath: () => {},
+  actionButtons: null,
+  setActionButtons: () => {}
 })
 
 const HeaderContextProvider = (props: Props) => {
   const router = useRouter()
   const menu = useMemo(() => ALL_MENUS.find(m => m.path == router.pathname), [router.pathname])
   const [customPath, setCustomPath] = useState<IMenuItem[] | null>(null)
+  const [actionButtons, setActionButtons] = useState<ReactNode | null>(null)
 
   useEffect(() => {
     setCustomPath(null)
@@ -30,15 +36,19 @@ const HeaderContextProvider = (props: Props) => {
   }
 
   return (
-    <HeaderContext.Provider value={{
-      setPath,
-      path: 
-        customPath !== null
-          ? customPath 
-          : menu
-            ? [menu]
-            : [pageNotFound]
-    }}>
+    <HeaderContext.Provider 
+      value={{
+        actionButtons,
+        setActionButtons,
+        setPath,
+        path: 
+          customPath !== null
+            ? customPath 
+            : menu
+              ? [menu]
+              : [pageNotFound]
+      }}
+    >
       {props.children}
     </HeaderContext.Provider>
   )

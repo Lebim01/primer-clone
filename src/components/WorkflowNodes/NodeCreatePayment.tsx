@@ -1,6 +1,14 @@
 import { BsPlayCircle } from "react-icons/bs"
 
-const NodeCreatePayment = () => {
+type Props = {
+  data: {
+    options: {
+      model: string;
+    }[];
+  }
+}
+
+const NodeCreatePayment = (props: Props) => {
   return (
     <>
       <div className='min-w-[200px] rounded-md border bg-white text-xxs font-medium shadow-sm'>
