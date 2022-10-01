@@ -34,7 +34,7 @@ const Workflows = () => {
   }, [status])
 
   return (
-    <>
+    <div className="p-8">
       <h3 className="mb-6 text-3xl">Workflows</h3>
       <StatusToggle />
       <CatalogGroup title="Checkout">
@@ -52,7 +52,7 @@ const Workflows = () => {
           <WorkflowApp data={workflow} key={workflow.uuid} />
         )}
       </CatalogGroup>
-    </>
+    </div>
   )
 }
 

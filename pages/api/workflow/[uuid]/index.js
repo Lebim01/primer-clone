@@ -1,12 +1,12 @@
 import { closeConnection, openConnection } from '@root/mysql/connection'
-import { getAppMethods } from '@root/mysql/apps'
+import { getWorkflow } from '@root/mysql/workflow'
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     
   } else if(req.method === 'GET') {
     const conn = await openConnection()
-    const result = await getAppMethods(conn, req.query.type, req.query.status)
+    const result = await getWorkflow(conn, req.query.uuid)
     closeConnection(conn)
     res.send(result)
   }

@@ -10,7 +10,7 @@ const LayoutBody = (props: Props) => {
   return (
     <div className="flex w-full flex-col">
       <HeaderBreadcrumb />
-      <div className="p-8">
+      <div className="h-full w-full">
         {props.children}
       </div>
     </div>

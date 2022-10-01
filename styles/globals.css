@@ -5,3 +5,7 @@
 * {
   font-family: 'Lato', monospace;
 }
+
+.react-flow__panel.react-flow__attribution {
+  display: none;
+}

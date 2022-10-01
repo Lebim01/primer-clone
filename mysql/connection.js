@@ -1,5 +1,5 @@
-const mysql = require('mysql-await')
-const connection_config = require('./connection.json')
+import mysql from 'mysql-await'
+import connection_config from './connection.json'
 
 const pool = mysql.createPool({
   host: '67.205.189.142',
@@ -8,15 +8,10 @@ const pool = mysql.createPool({
   database: 'workflows'
 });
 
-async function openConnection(){
+export async function openConnection(){
     return await pool.awaitGetConnection()
 }
 
-function closeConnection(con) {
+export function closeConnection(con) {
     con.release()
-}
-
-module.exports = {
-    openConnection,
-    closeConnection
 }

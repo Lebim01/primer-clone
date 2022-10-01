@@ -12,4 +12,4 @@ const urlparams  = (url: string, params: Params) => {
   return _url.toString()
 }
 
-export const fetcherGET = <T>(params: Params) => <T>(url: string): Promise<T> => axios.get(urlparams(url, params)).then(r => r.data)
+export const fetcherGET = <T>(params: Params, parse?: (data: any) => any) => <T>(url: string): Promise<T> => axios.get(urlparams(url, params)).then(r => parse ? parse(r.data) : r.data)
