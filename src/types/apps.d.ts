@@ -4,7 +4,8 @@ interface IApp {
   name: string;
   status: TStatus;
   created_at: Date;
-  methods?: number;
+  methods_count: number;
+  methods?: IAppMethod[];
 }
 
 interface IAppMethod {

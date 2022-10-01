@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -12,7 +14,8 @@ module.exports = {
       },
       colors: {
         primary: "#362ff9",
-        "primary-thin": "#8682fb"
+        "primary-thin": "#8682fb",
+        "hover-card": "#f5f5f5"
       },
       transitionProperty: {
         'width': 'width'

@@ -1,5 +1,5 @@
+import BadgeAppActions from '@src/components/UI/BadgeAppActions';
 import { motion } from 'framer-motion'
-import moment from 'moment';
 
 type Props = {
   data: IApp;
@@ -18,9 +18,7 @@ const WorkflowApp = (props: Props) => {
         <img src={props.data.icon} className="inline-block h-4 w-4" />
         <span>{props.data.name}</span>
       </div>
-      <div className="flex w-max rounded-full border bg-neutral-100 py-1 px-2 text-neutral-500">
-        <span className="text-xs">{props.data.methods} ACTIONS</span>
-      </div>
+      <BadgeAppActions methods={props.data.methods_count || 0} />
       <div className="flex w-[250px] border-t border-gray-300 px-2 pt-3">
         <div className="flex gap-2">
           <div>

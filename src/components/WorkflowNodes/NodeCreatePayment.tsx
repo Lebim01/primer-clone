@@ -9,6 +9,7 @@ type Props = {
 }
 
 const NodeCreatePayment = (props: Props) => {
+  console.log({ props })
   return (
     <>
       <div className='min-w-[200px] rounded-md border bg-white text-xxs font-medium shadow-sm'>

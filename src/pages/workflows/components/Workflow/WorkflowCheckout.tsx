@@ -21,7 +21,7 @@ const WorkflowCheckout = (props: Props) => {
       </div>
       <Link href={`/workflows/[uuid]`} as={`/workflows/${props.data.workflow_uuid}`} shallow>
         <a>
-          <div className="flex w-[250px] rounded border p-2 hover:cursor-pointer hover:bg-neutral-100">
+          <div className="flex w-[250px] rounded border p-2 hover:cursor-pointer hover:bg-hover-card">
             <div className="flex flex-1 flex-col">
               <span className="text-xs text-neutral-500">CHECKOUT</span>
               <span className="text-sm">{props.data.action}</span>
