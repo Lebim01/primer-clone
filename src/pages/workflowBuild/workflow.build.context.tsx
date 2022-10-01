@@ -55,7 +55,7 @@ const WorkflowBuildContextProvider = (props: Props) => {
   useEffect(() => {
     setActionButtons(
       <>
-       <button className="rounded border bg-black px-4 py-1 text-lg text-white">
+       <button className="btn-primary">
          Publish
        </button>
       </>
@@ -84,7 +84,8 @@ const WorkflowBuildContextProvider = (props: Props) => {
     const newNode: Node<any> = {
       id: `node-${uuid()}`,
       data: {
-        app_icon: method.app.icon_component
+        app_icon: method.app.icon_component,
+        ...method.data
       },
       type: method.node_type,
       position: newPosition,

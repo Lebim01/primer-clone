@@ -9,7 +9,7 @@ module.exports = {
   theme: {
     extend: {
       fontSize: {
-        'xxs': '.65rem',
+        'xxs': '.60rem',
         'xs': '.75rem',
       },
       colors: {

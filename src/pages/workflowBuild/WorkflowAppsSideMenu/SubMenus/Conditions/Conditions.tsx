@@ -2,28 +2,38 @@
 import { TiFlowSwitch } from "react-icons/ti"
 import { BsArrowRightShort } from "react-icons/bs"
 import { useWorkflowBuildContext } from "@src/pages/workflowBuild/workflow.build.context"
+import { useModalContext } from "@src/context/modal.context"
+import ModalCondition from "@src/modals/ModalCondition"
 import { uuid } from "uuidv4"
 
 const Conditions = () => {
   const { addNewNode } = useWorkflowBuildContext()
+  const { openModal, closeModal } = useModalContext()
 
   const Icon = () => <div className="text-md  rounded-full bg-blue-500 p-1 text-white"><TiFlowSwitch /></div>
 
   const addCondition = () => {
-    addNewNode({
-      app: {
-        icon: "",
-        created_at: new Date(),
-        methods_count: 0,
-        name: "CONDITION",
-        status: "active",
-        uuid: uuid(),
-      },
-      app_uuid: "",
-      name: "CONDITION",
-      uuid: uuid(),
-      type: "condition",
-      node_type: "condition"
+    const uuidModal = uuid()
+    openModal({
+      children: ModalCondition,
+      onSave: (data) => {
+        addNewNode({
+          app: {
+            icon: "",
+            created_at: new Date(),
+            methods_count: 0,
+            name: "CONDITION",
+            status: "active",
+            uuid: uuidModal,
+          },
+          data,
+          app_uuid: "",
+          name: "CONDITION",
+          uuid: uuidModal,
+          type: "condition",
+          node_type: "condition",
+        })
+      }
     })
   }
 

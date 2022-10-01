@@ -9,7 +9,7 @@ const WorkflowEdit = () => {
   const { nodes, edges, onNodesChange, onEdgesChange, onConnect } = useWorkflowBuildContext()
   const instance = useReactFlow()
   const nodeTypes = useMemo(() => NodeTypes, []);
-  const lastNode = useMemo(() => nodes[nodes.length -1]?.id, [nodes])
+  const lastNodeId = useMemo(() => nodes[nodes.length -1]?.id, [nodes])
 
   /**
    * fit view when insert new node
@@ -31,7 +31,7 @@ const WorkflowEdit = () => {
         padding: 0.2
       })
     }
-  }, [lastNode])
+  }, [lastNodeId])
 
   return (
     <div className="flex h-full w-full">

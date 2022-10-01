@@ -2,6 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .btn-primary {
+    background-color: theme('colors.black');
+    color: theme('colors.white');
+    border-radius: theme('borderRadius.md');
+    padding-left: theme('spacing.4');
+    padding-right: theme('spacing.4');
+    padding-bottom: theme('spacing.1');
+    padding-top: theme('spacing.1');
+    font-size: theme('fontSize.lg');
+  }
+  .btn-primary:hover {
+    background-color: theme('colors.neutral.600');
+  }
+
+  .btn {
+    border: 1px solid theme('colors.neutral.400');
+    border-radius: theme('borderRadius.md');
+    padding-left: theme('spacing.4');
+    padding-right: theme('spacing.4');
+    padding-bottom: theme('spacing.1');
+    padding-top: theme('spacing.1');
+  }
+  .btn:hover{
+    background-color: theme('colors.neutral.100');
+  }
+}
+
 * {
   font-family: 'Lato', monospace;
 }

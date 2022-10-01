@@ -19,4 +19,5 @@ interface IAppMethod {
 
 interface IAppMethodFull extends IAppMethod {
   app: IApp;
+  data?: any;
 }
