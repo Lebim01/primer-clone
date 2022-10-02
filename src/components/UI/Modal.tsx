@@ -10,7 +10,7 @@ const Modal = (props: ModalProps) => {
   return (
     <motion.div 
       ref={contentRef} 
-      className="absolute flex max-h-[80%] flex-col overflow-auto rounded-md border bg-white p-2 shadow-lg shadow-neutral-500 transition-all"
+      className="modal absolute flex max-h-[80%] flex-col overflow-auto rounded-md border bg-white p-2 shadow-lg shadow-neutral-500 transition-all"
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
       exit={{ scale: 0 }}

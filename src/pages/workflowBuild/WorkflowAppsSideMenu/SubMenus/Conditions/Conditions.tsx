@@ -43,7 +43,7 @@ const Conditions = () => {
     <div className="w-full">
       <h3 className="font-bold">Utilities</h3>
       <div className="relative mt-4 flex w-full flex-col gap-4">
-        <div className={`flex items-center gap-2 rounded-md border p-3 text-xs hover:cursor-pointer hover:bg-hover-card`} onClick={addCondition}>
+        <div className={`btn-add-condition flex items-center gap-2 rounded-md border p-3 text-xs hover:cursor-pointer hover:bg-hover-card`} onClick={addCondition}>
           <Icon />
           <div className="flex flex-1 flex-wrap">
             CONDITION

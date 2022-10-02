@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context('Network Requests', () => {
+context('Workflow', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/workflows')
   })

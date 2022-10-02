@@ -18,7 +18,7 @@ const TriggerAction = ({ data }: { data: IAppMethodFull }) => {
   const { addNewNode } = useWorkflowBuildContext()
 
   return (
-    <div className="relative pr-1" onClick={() => addNewNode(data)}>
+    <div className="app-trigger-action relative pr-1" onClick={() => addNewNode(data)}>
       <div className="flex flex-col rounded-md border py-2 px-4 transition-all hover:cursor-pointer hover:bg-hover-card">
         <span className="text-xxs text-neutral-500">PAYMENTS</span>
         <span className="text-sm font-bold">{data.name}</span>
@@ -34,7 +34,7 @@ const CollapsableItem = (props: CollapsableItemProps) => {
   const [open, setOpen] = useState(false)
 
   return (
-    <div className={`text-selection-none flex w-full flex-col rounded-md border`}>
+    <div className={`text-selection-none app-trigger flex w-full flex-col rounded-md border`}>
       
       <div className={`flex items-center gap-2 p-3 text-xs hover:cursor-pointer hover:bg-hover-card`} onClick={() => setOpen(s => !s)}>
         {props.icon}

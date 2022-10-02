@@ -5,8 +5,6 @@ import FilterItem from "../Filters/FilterItem";
 import NodeContainer from "./NodeContainer";
 
 const NodeCondition = (props: NodeProps) => {
-  console.log({props})
-
   return (
     <>
       <Handle

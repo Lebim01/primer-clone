@@ -57,7 +57,7 @@ const ModalContextProvider = (props: Props) => {
       {props.children}
       {modals.length > 0 && showModal &&
         <motion.div 
-          className="absolute left-0 top-0 z-10 flex h-full w-full items-center justify-center bg-gray-800/50"
+          className="modal-fade absolute left-0 top-0 z-10 flex h-full w-full items-center justify-center bg-gray-800/50"
         >
           <AnimatePresence>
             <Modal {...showModal} />

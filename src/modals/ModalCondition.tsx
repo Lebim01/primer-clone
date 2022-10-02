@@ -18,7 +18,7 @@ const Filter = (props: FilterProps) => {
     <motion.div layout className="flex flex-col rounded border p-4" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
       <div className="flex items-center">
         <span className="flex flex-1 items-center gap-3 font-bold">{props.icon} {props.title}</span>
-        <span className="text-neutral-400 hover:cursor-pointer" onClick={props.onRemove}><FaTimes /></span>
+        <span className="remove-filter text-neutral-400 hover:cursor-pointer" onClick={props.onRemove}><FaTimes /></span>
       </div>
       <div className="mt-3 flex flex-col gap-3">
         {props.children}
@@ -135,8 +135,8 @@ const ModalCondition = (props: ModalProps) => {
               state[filter.name] ? (
                 <Filter key={filter.name} title={filter.label} icon={filter.icon} onRemove={removeFilter(filter)}>
                   <div className="flex gap-3">
-                    <Select value={state[filter.name].operator} style={{width: "w-1/4"}} options={OPERATORS} onChange={change(filter.name, "operator")} />
-                    <Select value={state[filter.name].value} style={{}} options={filter.options} onChange={change(filter.name, "value")} />
+                    <Select className="selector-operator" value={state[filter.name].operator} style={{width: "w-1/4"}} options={OPERATORS} onChange={change(filter.name, "operator")} />
+                    <Select className="selector-value" value={state[filter.name].value} style={{}} options={filter.options} onChange={change(filter.name, "value")} />
                   </div>
                 </Filter>
               ) : null
