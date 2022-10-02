@@ -10,7 +10,7 @@ const Checkout = () => {
     <div className="flex h-full w-full">
       <CheckoutSideMenu />
       <div className="flex w-full items-center justify-center bg-neutral-200">
-        <motion.div className="flex w-[350px] flex-col gap-2 rounded-lg border bg-white p-8 shadow">
+        <motion.div className="checkout flex w-[350px] flex-col gap-2 rounded-lg border bg-white p-8 shadow">
           <AnimatePresence>
             {paymentMethods.filter(r => r.active).map((method) => 
               <motion.div key={method.name} className="h-12 w-full" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
