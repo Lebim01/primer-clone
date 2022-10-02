@@ -15,7 +15,7 @@ const FilterItem = ({ title, icon, value, onClick }: Props) => {
       </div>
       <div className="flex flex-col">
         <span className="text-xxs text-neutral-500">{title}</span>
-        <span className="text-md font-bold">{value}</span>
+        <span className="text-sm font-bold">{value}</span>
       </div>
     </div>
   )

@@ -28,6 +28,10 @@
   .btn:hover{
     background-color: theme('colors.neutral.100');
   }
+  .btn[disabled] {
+    color: theme('colors.neutral.300');
+    border-color: theme('colors.neutral.300');
+  }
 }
 
 * {
@@ -70,4 +74,13 @@ body {
 
 ::-webkit-scrollbar-corner {
   background-color: transparent;
+}
+
+.react-flow__node {
+  animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }

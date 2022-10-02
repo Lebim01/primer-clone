@@ -1,6 +1,7 @@
 import Modal from "@src/components/UI/Modal";
 import { createContext, useState, useContext, ReactNode, useMemo, useEffect } from "react";
 import { uuid } from "uuidv4"
+import { AnimatePresence, motion } from "framer-motion"
 
 type Props = {
   children: ReactNode;
@@ -55,9 +56,13 @@ const ModalContextProvider = (props: Props) => {
     >
       {props.children}
       {modals.length > 0 && showModal &&
-        <div className="absolute left-0 top-0 z-10 h-full w-full bg-gray-800/50">
-          <Modal {...showModal} />
-        </div>
+        <motion.div 
+          className="absolute left-0 top-0 z-10 flex h-full w-full items-center justify-center bg-gray-800/50"
+        >
+          <AnimatePresence>
+            <Modal {...showModal} />
+          </AnimatePresence>
+        </motion.div>
       }
     </ModalContext.Provider>
   )

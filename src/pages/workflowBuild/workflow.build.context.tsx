@@ -9,6 +9,8 @@ import useSWR from "swr";
 import { uuid } from "uuidv4"
 
 import type { OnNodesChange, OnEdgesChange, Node, Edge } from "reactflow"
+import { useModalContext } from "@src/context/modal.context";
+import ModalConfirmation from "@src/modals/ModalConfirmation";
 
 type Props = {
   children: ReactNode;
@@ -34,6 +36,7 @@ const WorkflowBuildContext = createContext<IWorkflowBuildContext>({
 
 const WorkflowBuildContextProvider = (props: Props) => {
   const router = useRouter()
+  const { openModal } = useModalContext()
   const { data: workflow } = useSWR<IWorkflow>(`/api/workflow/${router.query.uuid}`, fetcherGET<IWorkflow>({}))
   const { data: initialNodes } = useSWR<IWorkflowNode[]>(`/api/workflow/${router.query.uuid}/nodes`, fetcherGET<IWorkflowNode[]>({}))
 
@@ -55,7 +58,7 @@ const WorkflowBuildContextProvider = (props: Props) => {
   useEffect(() => {
     setActionButtons(
       <>
-       <button className="btn-primary">
+       <button className="btn-primary" onClick={publish}>
          Publish
        </button>
       </>
@@ -69,6 +72,17 @@ const WorkflowBuildContextProvider = (props: Props) => {
   useEffect(() => {
     setNodes(initialNodes || [])
   }, [initialNodes])
+
+  const publish = () => {
+    openModal({
+      children: ModalConfirmation,
+      onSave: (_, onClose) => {
+        setTimeout(() => {
+          onClose()
+        }, 1000)
+      },
+    })
+  }
 
   const onConnect = useCallback((params: any) => setEdges((els) => addEdge(params, els)), []);
   

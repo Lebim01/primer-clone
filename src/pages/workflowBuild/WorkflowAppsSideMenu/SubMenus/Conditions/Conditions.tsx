@@ -10,7 +10,7 @@ const Conditions = () => {
   const { addNewNode } = useWorkflowBuildContext()
   const { openModal, closeModal } = useModalContext()
 
-  const Icon = () => <div className="text-md  rounded-full bg-blue-500 p-1 text-white"><TiFlowSwitch /></div>
+  const Icon = () => <div className="rounded-full bg-blue-500 p-1 text-sm text-white"><TiFlowSwitch /></div>
 
   const addCondition = () => {
     const uuidModal = uuid()
@@ -26,7 +26,9 @@ const Conditions = () => {
             status: "active",
             uuid: uuidModal,
           },
-          data,
+          data: {
+            filters: data
+          },
           app_uuid: "",
           name: "CONDITION",
           uuid: uuidModal,

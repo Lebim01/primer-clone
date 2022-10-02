@@ -45,7 +45,7 @@ const WorkflowCheckout = (props: Props) => {
         </div>
       </div>
       <div className="flex justify-end">
-        <Link href="/draft">
+        <Link href="#">
           <a className="flex items-center gap-1 text-xs text-primary-thin">
             1 Draft <BsArrowRight />
           </a>

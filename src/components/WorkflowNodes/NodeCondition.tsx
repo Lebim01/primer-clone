@@ -1,9 +1,12 @@
 // @ts-nocheck
 import { TiFlowSwitch } from "react-icons/ti"
 import { Handle } from 'reactflow';
+import FilterItem from "../Filters/FilterItem";
 import NodeContainer from "./NodeContainer";
 
 const NodeCondition = (props: NodeProps) => {
+  console.log({props})
+
   return (
     <>
       <Handle
@@ -23,10 +26,21 @@ const NodeCondition = (props: NodeProps) => {
         />
       }
       <NodeContainer 
-        topTitle="CONDITION" 
-        icon={<div className="text-md  rounded-full bg-blue-500 p-1 text-white"><TiFlowSwitch /></div>}
+        topTitle="CONDITION"
+        icon={<div className="rounded-full  bg-blue-500 p-1 text-sm text-white"><TiFlowSwitch /></div>}
       >
-
+        {Object.keys(props.data?.filters)?.map((key) => {
+          const filter = props.data.filters[key]
+          const selectedOption = props.data.filters[key].options.find(r => r.value == filter.value)
+          return (
+            <FilterItem 
+              key={key}
+              icon={filter.icon}
+              title={filter.label.toUpperCase()}
+              value={selectedOption?.label || "-"}
+            />
+          )
+        })}
       </NodeContainer>
     </>
   )
