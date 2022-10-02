@@ -2,6 +2,7 @@
 import { useHeaderContext } from "@src/components/HeaderBreadcrumb/header.context";
 import { createContext, useContext, ReactNode, useEffect } from "react";
 import { useModalContext } from "@src/context/modal.context";
+import ModalConfirmation from "@src/modals/ModalConfirmation";
 
 type Props = {
   children: ReactNode;
@@ -21,7 +22,14 @@ const CheckoutBuildContextProvider = (props: Props) => {
   const { setActionButtons } = useHeaderContext()
 
   const publish = () => {
-
+    openModal({
+      children: ModalConfirmation,
+      onSave: (_, onClose) => {
+        setTimeout(() => {
+          onClose()
+        }, 1200)
+      },
+    })
   }
 
   useEffect(() => {

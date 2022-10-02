@@ -8,7 +8,7 @@ type Props = {
 
 const LayoutBody = (props: Props) => {
   return (
-    <div className="flex max-h-screen w-full flex-col overflow-hidden">
+    <div className="flex max-h-screen w-full max-w-full flex-col overflow-hidden">
       <HeaderBreadcrumb />
       <div className="h-full w-full overflow-auto">
         {props.children}
