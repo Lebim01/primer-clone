@@ -31,10 +31,6 @@ const HeaderContextProvider = (props: Props) => {
     setCustomPath(null)
   }, [router.pathname])
 
-  useEffect(() => {
-    setActionButtons(null)
-  }, [router.pathname])
-
   const setPath = (path: IMenuItem[]) => {
     setCustomPath(path)
   }

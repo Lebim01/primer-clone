@@ -3,6 +3,9 @@ import { useHeaderContext } from "@src/components/HeaderBreadcrumb/header.contex
 import { createContext, useContext, ReactNode, useEffect } from "react";
 import { useModalContext } from "@src/context/modal.context";
 import ModalConfirmation from "@src/modals/ModalConfirmation";
+import { BsFillPlayFill } from "react-icons/bs";
+import { useRouter } from "next/router";
+import ModalDemoCheckout from "@src/modals/ModalDemoCheckout";
 
 type Props = {
   children: ReactNode;
@@ -32,13 +35,27 @@ const CheckoutBuildContextProvider = (props: Props) => {
     })
   }
 
+  const testCheckout = () => {
+    openModal({
+      children: ModalDemoCheckout,
+      onSave: (_, onClose) => {
+        setTimeout(() => {
+          onClose()
+        }, 1200)
+      },
+    })
+  }
+
   useEffect(() => {
     setActionButtons(
-      <>
-       <button className="btn-primary" onClick={publish}>
-         Publish
-       </button>
-      </>
+      <div className="flex gap-3">
+        <button className="btn flex items-center gap-1" onClick={testCheckout}>
+          Test <BsFillPlayFill />
+        </button>
+        <button className="btn-primary" onClick={publish}>
+          Publish
+        </button>
+      </div>
     )
   }, [])
   

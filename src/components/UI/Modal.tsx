@@ -3,14 +3,19 @@ import { useRef } from "react"
 import { FaTimes } from "react-icons/fa";
 import { motion } from "framer-motion"
 
-const Modal = (props: ModalProps) => {
+interface ModalPropsRender extends ModalProps {
+  show: boolean;
+}
+
+const Modal = (props: ModalPropsRender) => {
   const contentRef = useRef(null);
-  useOutsideAlerter(contentRef, props.onClose);
+  useOutsideAlerter(contentRef, props.show ? props.onClose : () => {});
 
   return (
     <motion.div 
+      key={props.uuid}
       ref={contentRef} 
-      className="modal absolute flex max-h-[80%] flex-col overflow-auto rounded-md border bg-white p-2 shadow-lg shadow-neutral-500 transition-all"
+      className={`modal absolute max-h-[80%] flex-col overflow-auto rounded-md border bg-white p-2 shadow-lg shadow-neutral-500 transition-all ${props.show ? "flex" : "hidden"}`}
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
       exit={{ scale: 0 }}

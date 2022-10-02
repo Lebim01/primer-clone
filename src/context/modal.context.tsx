@@ -24,11 +24,13 @@ const ModalContextProvider = (props: Props) => {
 
   const openModal = (modalProps: OpenModalProps) => {
     const modaluuid = uuid()
-    setModals([...modals, {
-      ...modalProps,
-      uuid: modaluuid,
-      onClose: () => closeModal(modaluuid),
-    }])
+    setModals(modals => {
+      return [...modals, {
+        ...modalProps,
+        uuid: modaluuid,
+        onClose: () => closeModal(modaluuid),
+      }]
+    })
   }
 
   const closeModal = (uuid: string) => {
@@ -55,12 +57,14 @@ const ModalContextProvider = (props: Props) => {
       }}
     >
       {props.children}
-      {modals.length > 0 && showModal &&
+      {modals.length > 0 &&
         <motion.div 
           className="modal-fade absolute left-0 top-0 z-10 flex h-full w-full items-center justify-center bg-gray-800/50"
         >
           <AnimatePresence>
-            <Modal {...showModal} />
+            {modals.map((modal) => 
+              <Modal key={modal.uuid} show={modal.uuid == showModal?.uuid} {...modal} />
+            )}
           </AnimatePresence>
         </motion.div>
       }

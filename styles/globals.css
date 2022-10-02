@@ -16,6 +16,10 @@
   .btn-primary:hover {
     background-color: theme('colors.neutral.600');
   }
+  .btn-primary[disabled] {
+    background-color: theme('colors.neutral.600');
+    cursor: default;
+  }
 
   .btn {
     border: 1px solid theme('colors.neutral.400');
@@ -97,7 +101,7 @@ body {
   cursor: pointer;
 }
 
-.switch[data-isOn="true"] {
+.switch[data-is-on="true"] {
   justify-content: flex-end;
 }
 
@@ -108,6 +112,6 @@ body {
   border-radius: 100%;
 }
 
-.switch[data-isOn="true"] .handle {
+.switch[data-is-on="true"] .handle {
   background-color: theme('colors.primary-thin');
 }
