@@ -22,7 +22,7 @@ const StatusToggle = () => {
         return (
           <div 
             key={index} 
-            className={`flex items-center gap-2 font-medium ${isActive ? "text-black underline decoration-primary decoration-2 underline-offset-8" : "text-neutral-400"} text-selection-none transition-all hover:cursor-pointer hover:underline hover:decoration-neutral-500 hover:decoration-2 hover:underline-offset-8`} 
+            className={`flex items-center gap-2 font-medium ${isActive ? "text-black underline decoration-primary decoration-2 underline-offset-8" : "text-neutral-400"} text-selection-none toggle-status transition-all hover:cursor-pointer hover:underline hover:decoration-neutral-500 hover:decoration-2 hover:underline-offset-8`} 
             onClick={() => {
               setStatus(opt.status)
             }}
