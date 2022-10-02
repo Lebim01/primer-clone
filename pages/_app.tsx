@@ -8,10 +8,13 @@ import Layout from '@src/layout/Layout'
 import HeaderContextProvider from '@src/components/HeaderBreadcrumb/header.context'
 import { SWRConfig } from 'swr'
 import ModalContextProvider from '@src/context/modal.context';
+import { useRouter } from 'next/router';
 
 axios.defaults.baseURL = process.env.HOST_API
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter()
+
   return (
     <SWRConfig
       value={{

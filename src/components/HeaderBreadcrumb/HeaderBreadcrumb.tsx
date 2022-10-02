@@ -2,12 +2,13 @@ import Link from "next/link";
 import React from "react";
 import { BsHouseDoor } from "react-icons/bs"
 import { useHeaderContext } from "./header.context";
+import { motion } from "framer-motion"
 
 const HeaderBreadcrumb = () => {
   const { path, actionButtons } = useHeaderContext()
 
   return (
-    <div className="flex border-b p-6">
+    <motion.div layout className="flex border-b p-6">
       <div className="flex flex-1 items-center gap-3">
         <Link href="/workflows" className="hover:cursor-pointer">
           <a>
@@ -29,10 +30,10 @@ const HeaderBreadcrumb = () => {
           )
         })}
       </div>
-      <div>
+      <motion.div>
         {actionButtons}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   )
 }
 
