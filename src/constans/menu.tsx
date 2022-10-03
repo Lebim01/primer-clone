@@ -5,12 +5,14 @@ export const primerMenu: IMenuItem[] = [
   {
     icon: <BsFillGrid1X2Fill />,
     name: "Snapshot",
-    path: "/snapshot"
+    path: "/snapshot",
+    locked: true
   },
   {
     icon: <BsPlusLg />,
     name: "Connections",
-    path: "/connections"
+    path: "/connections",
+    locked: true
   },
   {
     icon: <BiNetworkChart />,
@@ -25,22 +27,26 @@ export const primerMenu: IMenuItem[] = [
   {
     icon: <BsWallet />,
     name: "Payments",
-    path: "/payments"
+    path: "/payments",
+    locked: true
   },
   {
     icon: <BsBarChart />,
     name: "Analytics",
-    path: "/analytics"
+    path: "/analytics",
+    locked: true
   },
   {
     icon: <BsFolderCheck />,
     name: "Reconciliation",
-    path: "/reconciliation"
+    path: "/reconciliation",
+    locked: true
   },
   {
     icon: <BsCode />,
     name: "Developers",
-    path: "/developers"
+    path: "/developers",
+    locked: true
   }
 ]
 
@@ -48,12 +54,14 @@ export const supportMenu: IMenuItem[] = [
   {
     icon: <BsBook />,
     name: "API reference",
-    path: "/api-reference"
+    path: "/api-reference",
+    locked: true
   },
   {
     icon: <BsGift />,
     name: "What's new?",
-    path: "/whats-new"
+    path: "/whats-new",
+    locked: true
   },
 ]
 
@@ -61,12 +69,14 @@ export const accountMenu: IMenuItem[] = [
   {
     icon: <BsPerson />,
     name: "Profile",
-    path: "/profile"
+    path: "/profile",
+    locked: true
   },
   {
     icon: <BsGearFill />,
     name: "Settings",
-    path: "/settings"
+    path: "/settings",
+    locked: true
   },
 ]
 
