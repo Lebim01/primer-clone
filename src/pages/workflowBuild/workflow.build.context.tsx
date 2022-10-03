@@ -11,6 +11,8 @@ import { uuid } from "uuidv4"
 import type { OnNodesChange, OnEdgesChange, Node, Edge } from "reactflow"
 import { useModalContext } from "@src/context/modal.context";
 import ModalConfirmation from "@src/modals/ModalConfirmation";
+import { BsInfoCircle } from "react-icons/bs";
+import { useTour } from "@reactour/tour";
 
 type Props = {
   children: ReactNode;
@@ -36,6 +38,7 @@ const WorkflowBuildContext = createContext<IWorkflowBuildContext>({
 
 const WorkflowBuildContextProvider = (props: Props) => {
   const router = useRouter()
+  const { setIsOpen, setCurrentStep } = useTour()
   const { openModal } = useModalContext()
   const { data: workflow } = useSWR<IWorkflow>(`/api/workflow/${router.query.uuid}`, fetcherGET<IWorkflow>({}))
   const { data: initialNodes } = useSWR<IWorkflowNode[]>(`/api/workflow/${router.query.uuid}/nodes`, fetcherGET<IWorkflowNode[]>({}))
@@ -57,11 +60,19 @@ const WorkflowBuildContextProvider = (props: Props) => {
 
   useEffect(() => {
     setActionButtons(
-      <>
-       <button className="btn-primary" onClick={publish}>
-         Publish
-       </button>
-      </>
+      <div className="flex gap-3">
+        <button title="Open tour" 
+          onClick={() => {
+            setCurrentStep(0)
+            setIsOpen(true)
+          }}
+        >
+          <BsInfoCircle size={20} />
+        </button>
+        <button className="btn-primary" onClick={publish}>
+          Publish
+        </button>
+      </div>
     )
   }, [])
 

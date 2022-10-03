@@ -40,6 +40,8 @@
 
 * {
   font-family: 'Lato', monospace;
+
+  --reactour-accent: theme('colors.primary');
 }
 
 .react-flow__panel.react-flow__attribution {
@@ -114,4 +116,11 @@ body {
 
 .switch[data-is-on="true"] .handle {
   background-color: theme('colors.primary-thin');
+}
+
+.reactour__popover {
+  border-radius: theme('borderRadius.lg');
+}
+.reactour__close-button {
+  top: 15px !important;
 }

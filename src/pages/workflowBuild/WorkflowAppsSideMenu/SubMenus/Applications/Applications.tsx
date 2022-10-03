@@ -35,8 +35,7 @@ const CollapsableItem = (props: CollapsableItemProps) => {
 
   return (
     <div className={`text-selection-none app-trigger flex w-full flex-col rounded-md border`}>
-      
-      <div className={`flex items-center gap-2 p-3 text-xs hover:cursor-pointer hover:bg-hover-card`} onClick={() => setOpen(s => !s)}>
+      <div className={`flex items-center gap-2 p-3 text-xs hover:cursor-pointer hover:bg-hover-card`} onClick={() => setOpen(s => !s)} data-is-open={open}>
         {props.icon}
         <div className="flex flex-1 flex-wrap">
           {props.body}
