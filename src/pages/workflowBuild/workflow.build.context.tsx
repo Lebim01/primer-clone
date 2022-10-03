@@ -49,7 +49,7 @@ const WorkflowBuildContextProvider = (props: Props) => {
     const workflows: IMenuItem = ALL_MENUS.find(r => r.path == "/workflows")!
     const current: IMenuItem = { icon: null, name: workflow?.name!, path: router.asPath }
     return [workflows, current]
-  }, [workflow, router.asPath])
+  }, [workflow?.name, router.query.uuid])
 
   // @ts-ignore:next-line
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
