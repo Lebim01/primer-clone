@@ -52,6 +52,10 @@ const steps: StepType[] = [
   {
     selector: '.app-trigger > div .app-trigger-action',
     content: 'Add actions you want'
+  },
+  {
+    selector: '.header .btn-primary',
+    content: 'At the end just publish'
   }
 ]
 

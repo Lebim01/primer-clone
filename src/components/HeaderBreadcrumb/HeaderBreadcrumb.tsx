@@ -8,7 +8,7 @@ const HeaderBreadcrumb = () => {
   const { path, actionButtons } = useHeaderContext()
 
   return (
-    <motion.div layout className="flex border-b p-6">
+    <motion.div layout className="header flex border-b p-6">
       <div className="flex flex-1 items-center gap-3">
         <Link href="/workflows" className="hover:cursor-pointer">
           <a>
