@@ -18,7 +18,9 @@ const steps: StepType[] = [
     selector: '.toggle-side-menu',
     content: 'Here you have a side menu with all actions in order to add a flow',
     actionAfter: async () => {
-      
+      await wait()
+      const event = new Event('resize');
+      window.dispatchEvent(event)
     }
   },
   {
