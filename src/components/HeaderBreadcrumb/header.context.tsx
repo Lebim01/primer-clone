@@ -28,7 +28,8 @@ const HeaderContextProvider = (props: Props) => {
   const [actionButtons, setActionButtons] = useState<ReactNode | null>(null)
 
   useEffect(() => {
-    setCustomPath(null)
+    if(router.pathname != "/workflows/[uuid]")
+      setCustomPath(null)
   }, [router.pathname])
 
   const setPath = (path: IMenuItem[]) => {
