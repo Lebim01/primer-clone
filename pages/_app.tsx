@@ -10,6 +10,7 @@ import { SWRConfig } from 'swr'
 import ModalContextProvider from '@src/context/modal.context';
 import { useRouter } from 'next/router';
 import { StepType, TourProvider } from '@reactour/tour';
+import { SelectContextProvider } from '@src/components/UI/Select';
 
 axios.defaults.baseURL = process.env.HOST_API
 
@@ -44,15 +45,17 @@ function MyApp({ Component, pageProps }: AppProps) {
           refreshInterval: 0,
         }}
       >
-        <ModalContextProvider>
-          <HeaderContextProvider>
-            <Layout>
-              <LayoutBody>
-                <Component {...pageProps} />
-              </LayoutBody>
-            </Layout>
-          </HeaderContextProvider>
-        </ModalContextProvider>
+        <SelectContextProvider>
+          <ModalContextProvider>
+            <HeaderContextProvider>
+              <Layout>
+                <LayoutBody>
+                  <Component {...pageProps} />
+                </LayoutBody>
+              </Layout>
+            </HeaderContextProvider>
+          </ModalContextProvider>
+        </SelectContextProvider>
       </SWRConfig>
     </TourProvider>
   )
