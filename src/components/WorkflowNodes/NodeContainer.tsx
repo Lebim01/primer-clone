@@ -20,7 +20,7 @@ const NodeContainer = (props: Props) => {
             <span>{props.title}</span>
           </div>
         </div>
-        <div className='flex p-4'>
+        <div className='flex flex-col p-4'>
           {props.children}
         </div>
       </div>
