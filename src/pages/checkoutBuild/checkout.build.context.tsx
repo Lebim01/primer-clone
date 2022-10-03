@@ -3,9 +3,10 @@ import { useHeaderContext } from "@src/components/HeaderBreadcrumb/header.contex
 import { createContext, useContext, ReactNode, useEffect } from "react";
 import { useModalContext } from "@src/context/modal.context";
 import ModalConfirmation from "@src/modals/ModalConfirmation";
-import { BsFillPlayFill } from "react-icons/bs";
+import { BsFillPlayFill, BsInfoCircle } from "react-icons/bs";
 import { useRouter } from "next/router";
 import ModalDemoCheckout from "@src/modals/ModalDemoCheckout";
+import { useTour } from "@reactour/tour";
 
 type Props = {
   children: ReactNode;
@@ -21,6 +22,7 @@ const CheckoutBuildContext = createContext<ICheckoutBuildContext>({
 
 const CheckoutBuildContextProvider = (props: Props) => {
   const { openModal } = useModalContext()
+  const { setIsOpen, setCurrentStep } = useTour()
 
   const { setActionButtons } = useHeaderContext()
 
@@ -49,6 +51,14 @@ const CheckoutBuildContextProvider = (props: Props) => {
   useEffect(() => {
     setActionButtons(
       <div className="flex gap-3">
+        <button title="Open tour" 
+          onClick={() => {
+            setCurrentStep(0)
+            setIsOpen(true)
+          }}
+        >
+          <BsInfoCircle size={20} />
+        </button>
         <button className="btn flex items-center gap-1" onClick={testCheckout}>
           Test <BsFillPlayFill />
         </button>
