@@ -11,11 +11,6 @@ const steps: StepType[] = [
   {
     selector: '.tab-content',
     content: 'Here you can toggle different payment methods',
-    actionAfter: async () => {
-      await wait()
-      const event = new Event('resize');
-      window.dispatchEvent(event)
-    }
   },
   {
     selector: '.checkout',
@@ -24,6 +19,19 @@ const steps: StepType[] = [
   {
     selector: '.header .btn',
     content: 'You can test your configuration clicking here'
+  },
+  {
+    action: async () => {
+      const btn: HTMLElement = document.querySelector(".header .btn")!
+      if(btn)
+        btn.click()
+
+      await wait(500)
+      const event = new Event('resize');
+      window.dispatchEvent(event)
+    },
+    selector: '.modal .btn-primary',
+    content: 'Test flow of your configuration',
   },
   {
     selector: '.header .btn-primary',

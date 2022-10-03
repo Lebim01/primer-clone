@@ -1,5 +1,5 @@
-export const wait = () => {
+export const wait = (time = 200) => {
   return new Promise((resolve) => {
-    setTimeout(resolve, 200)
+    setTimeout(resolve, time)
   })
 }
