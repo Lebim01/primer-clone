@@ -1,3 +1,4 @@
+import { useHeaderContext } from "@src/components/HeaderBreadcrumb/header.context"
 import CatalogGroup from "@src/pages/workflows/components/CatalogGroup"
 import StatusToggle from "@src/pages/workflows/components/StatusToggle"
 import WorkflowApp from "@src/pages/workflows/components/Workflow/WorkflowApp"
@@ -10,6 +11,7 @@ import useSWR from 'swr'
 
 const Workflows = () => {
   const { status: [status] } = useWorkflowListContext()
+  const { setActionButtons } = useHeaderContext()
 
   const checkouts = useSWR<IFlowCheckout[]>('/api/flow/checkout', fetcherGET<IFlowCheckout[]>({ status }), {
     revalidateOnMount: false,
@@ -20,6 +22,10 @@ const Workflows = () => {
   const apps = useSWR<IApp[]>('/api/app?type=app', fetcherGET<IApp[]>({ status }), {
     revalidateOnMount: false
   })
+
+  useEffect(() => {
+    setActionButtons(null)
+  }, [])
 
   useEffect(() => {
     checkouts.mutate(undefined, {
