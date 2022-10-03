@@ -22,7 +22,7 @@ const HeaderBreadcrumb = () => {
             <React.Fragment key={index}>
               <Link href={item.path} as={item.path}>
                 <a>
-                  <span className={`${isLast ? "text-black" : "text-neutral-500"} font-medium hover:cursor-pointer hover:text-black`}>{item.name}</span>
+                  <span className={`${isLast ? "text-black underline decoration-2 underline-offset-4" : "text-neutral-500"} font-medium hover:cursor-pointer hover:text-black`}>{item.name}</span>
                 </a>
               </Link>
               {!isLast && <span className="text-neutral-500">{'>'}</span>}
