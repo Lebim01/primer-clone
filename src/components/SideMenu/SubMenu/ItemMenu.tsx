@@ -10,7 +10,7 @@ const ItemMenu = (props: IMenuItem) => {
 
   return (
     <Link href={props.path}>
-      <div className={`flex items-center gap-4 rounded px-4 py-1 font-medium hover:cursor-pointer hover:bg-hover-card hover:text-black ${isActive ? "border-r-4 border-primary text-black" : "text-neutral-400"} transition-all`}>
+      <div className={`flex items-center gap-4 rounded px-4 py-1 font-medium hover:cursor-pointer hover:bg-hover-card hover:text-black ${isActive ? "border-r-4 border-primary text-black" : "text-neutral-400"} menu-item transition-all`}>
         <span className={collapse ? "text-2xl" : ""}>{props.icon}</span>
         {!collapse && <span>{props.name}</span>}
       </div>

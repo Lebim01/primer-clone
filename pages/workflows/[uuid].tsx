@@ -5,12 +5,7 @@ import WorkflowAppsSideMenu from "@src/pages/workflowBuild/WorkflowAppsSideMenu/
 import WorkflowBuildContextProvider, { useWorkflowBuildContext } from "@src/pages/workflowBuild/workflow.build.context"
 import WorkflowBuildSidemenuContextProvider from "@src/pages/workflowBuild/WorkflowAppsSideMenu/workflow.build.sidemenu.context";
 import { StepType, TourProvider, useTour } from '@reactour/tour'
-
-const wait = () => {
-  return new Promise((resolve) => {
-    setTimeout(resolve, 200)
-  })
-}
+import { wait } from "@src/utils/tour";
 
 const TOUR_NAME = "tour-edit-flow"
 const steps: StepType[] = [

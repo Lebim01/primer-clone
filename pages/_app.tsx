@@ -9,32 +9,52 @@ import HeaderContextProvider from '@src/components/HeaderBreadcrumb/header.conte
 import { SWRConfig } from 'swr'
 import ModalContextProvider from '@src/context/modal.context';
 import { useRouter } from 'next/router';
+import { StepType, TourProvider } from '@reactour/tour';
 
 axios.defaults.baseURL = process.env.HOST_API
+
+const WELCOME_TOUR = "tour-welcome"
+const steps: StepType[] = [
+  {
+    selector: '.menu-item:nth-child(3)',
+    content: 'Welcome! You can manage your flows right here',
+  },
+  {
+    selector: ".menu-item:nth-child(4)",
+    content: 'Also here you can config your global checkout form'
+  },
+]
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
 
   return (
-    <SWRConfig
-      value={{
-        revalidateOnFocus: false,
-        revalidateOnReconnect: false,
-        refreshWhenOffline: false,
-        refreshWhenHidden: false,
-        refreshInterval: 0,
+    <TourProvider 
+      steps={steps} 
+      beforeClose={(c) => { 
+        localStorage.setItem(WELCOME_TOUR, "1"); 
       }}
     >
-      <ModalContextProvider>
-        <HeaderContextProvider>
-          <Layout>
-            <LayoutBody>
-              <Component {...pageProps} />
-            </LayoutBody>
-          </Layout>
-        </HeaderContextProvider>
-      </ModalContextProvider>
-    </SWRConfig>
+      <SWRConfig
+        value={{
+          revalidateOnFocus: false,
+          revalidateOnReconnect: false,
+          refreshWhenOffline: false,
+          refreshWhenHidden: false,
+          refreshInterval: 0,
+        }}
+      >
+        <ModalContextProvider>
+          <HeaderContextProvider>
+            <Layout>
+              <LayoutBody>
+                <Component {...pageProps} />
+              </LayoutBody>
+            </Layout>
+          </HeaderContextProvider>
+        </ModalContextProvider>
+      </SWRConfig>
+    </TourProvider>
   )
 }
 
