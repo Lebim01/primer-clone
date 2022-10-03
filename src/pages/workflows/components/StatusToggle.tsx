@@ -16,7 +16,7 @@ const StatusToggle = () => {
   const { status: [status, setStatus] } = useWorkflowListContext()
 
   return (
-    <div className="flex gap-4">
+    <div className="group-toggle-status flex w-min gap-4">
       {OPTIONS.map((opt, index) => {
         const isActive = opt.status == status
         return (

@@ -1,3 +1,4 @@
+import { StepType, TourProvider, useTour } from "@reactour/tour"
 import { useHeaderContext } from "@src/components/HeaderBreadcrumb/header.context"
 import CatalogGroup from "@src/pages/workflows/components/CatalogGroup"
 import StatusToggle from "@src/pages/workflows/components/StatusToggle"
@@ -6,12 +7,26 @@ import WorkflowCheckout from "@src/pages/workflows/components/Workflow/WorkflowC
 import WorkflowPayment from "@src/pages/workflows/components/Workflow/WorkflowPayment"
 import WorkflowListContextProvider, { useWorkflowListContext } from "@src/pages/workflows/workflows.list.context"
 import { fetcherGET } from "@src/services/fetchers"
-import { useEffect } from "react"
+import { useEffect, useMemo } from "react"
+import { BsInfoCircle } from "react-icons/bs"
 import useSWR from 'swr'
+
+const TOUR_NAME = "tour-flow"
+const steps: StepType[] = [
+  {
+    selector: '.group-toggle-status',
+    content: 'Filter by status',
+  },
+  {
+    selector: 'a[href*="/workflows/"]',
+    content: 'Go to edit a flow'
+  },
+]
 
 const Workflows = () => {
   const { status: [status] } = useWorkflowListContext()
   const { setActionButtons } = useHeaderContext()
+  const { setIsOpen, setCurrentStep } = useTour()
 
   const checkouts = useSWR<IFlowCheckout[]>('/api/flow/checkout', fetcherGET<IFlowCheckout[]>({ status }), {
     revalidateOnMount: false,
@@ -23,8 +38,29 @@ const Workflows = () => {
     revalidateOnMount: false
   })
 
+  const openTourByDefault = useMemo(() => {
+    return typeof localStorage != "undefined" && localStorage.getItem(TOUR_NAME) ? false : true
+  }, [])
+
   useEffect(() => {
-    setActionButtons(null)
+    if(typeof openTourByDefault == "boolean"){
+      if(openTourByDefault && steps.length > 0){
+        setIsOpen(true)
+      }
+    }
+  }, [openTourByDefault, steps])
+
+  useEffect(() => {
+    setActionButtons(<>
+      <button title="Open tour" 
+      onClick={() => {
+        setCurrentStep(0)
+        setIsOpen(true)
+      }}
+    >
+      <BsInfoCircle size={20} />
+    </button>
+    </>)
   }, [])
 
   useEffect(() => {
@@ -64,9 +100,16 @@ const Workflows = () => {
 
 const Container = () => {
   return (
-    <WorkflowListContextProvider>
-      <Workflows />
-    </WorkflowListContextProvider>
+    <TourProvider
+      steps={steps} 
+      beforeClose={(c) => { 
+        localStorage.setItem(TOUR_NAME, "1"); 
+      }}
+    >
+      <WorkflowListContextProvider>
+        <Workflows />
+      </WorkflowListContextProvider>
+    </TourProvider>
   )
 }
 
