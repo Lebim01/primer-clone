@@ -19,13 +19,13 @@ const TabItem = ({ title, percent, diff, icon }: any) => (
 
 const Snapshot = () => {
   return (
-    <div className="grid h-full w-full grid-cols-3 gap-8 p-10" style={{ gridTemplateRows: "max-content" }}>
+    <div className="grid h-full w-full grid-cols-1 gap-8 p-10 lg:grid-cols-3" style={{ gridTemplateRows: "max-content" }}>
 
       <div className="flex h-96 flex-col gap-4 rounded bg-primary-thin p-6 text-white shadow">
         <span className="text-xl">Sales</span>
         <div className="flex flex-col">
           <span className="text-sm">Total sales volume</span>
-          <div className="mt-2 flex gap-4">
+          <div className="mt-2 flex flex-wrap gap-4">
             <span className="flex items-center text-3xl">
               <BsCurrencyEuro />
               <Counter className="" from={0} to={1.2} />
@@ -37,7 +37,7 @@ const Snapshot = () => {
               k
             </span>
             <span className="flex flex-1 justify-end">
-              <div className="flex items-center gap-1 rounded bg-violet-800/30 px-2 text-xs">
+              <div className="flex h-8 items-center gap-1 rounded bg-violet-800/30 px-2 text-xs">
                 <BsFillCaretUpFill /> 25%
               </div>
             </span>
@@ -45,7 +45,7 @@ const Snapshot = () => {
         </div>
         <div className="flex flex-col">
           <span className="text-sm">Average payment</span>
-          <div className="mt-2 flex gap-4">
+          <div className="mt-2 flex flex-wrap gap-4">
             <span className="flex items-center text-3xl">
               <BsCurrencyEuro />
               <Counter className="" from={0} to={5} />
@@ -55,7 +55,7 @@ const Snapshot = () => {
               <Counter className="" from={0} to={4} />
             </span>
             <span className="flex flex-1 justify-end">
-              <div className="flex items-center gap-1 rounded bg-violet-800/30 px-2 text-xs">
+              <div className="flex h-8 items-center gap-1 rounded bg-violet-800/30 px-2 text-xs">
                 <BsFillCaretUpFill /> 20%
               </div>
             </span>
@@ -63,7 +63,7 @@ const Snapshot = () => {
         </div>
       </div>
 
-      <div className="col-span-2 flex h-96 flex-col rounded bg-gray-100/50 shadow">
+      <div className="flex h-96 flex-col rounded bg-gray-100/50 shadow lg:col-span-2">
         <div className="flex px-4 pt-4">
           <div className="flex-1">
             <span className="font-semibold">Daily sales</span>
@@ -105,7 +105,7 @@ const Snapshot = () => {
             },
             grid: {
               bottom: "10%",
-              left: "5%",
+              left: "8%",
               right: "5%",
               top: "5%"
             },

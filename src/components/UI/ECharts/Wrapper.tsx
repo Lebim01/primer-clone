@@ -1,5 +1,6 @@
-import { useCallback, useRef } from "react"
+import { useCallback, useEffect, useRef } from "react"
 import * as echarts from "echarts";
+import useWindowSize from "@src/hooks/useWindowSize";
 
 type Props = {
   id: string;
@@ -9,6 +10,7 @@ type Props = {
 
 const EChartsWrapper = ({ className, ...props }: Props) => {
   const instance = useRef<any>(null);
+  const { width } = useWindowSize()
 
   const reloadInstance = () => {
     const chartDom: HTMLElement = document.getElementById(props.id)!;
@@ -23,6 +25,12 @@ const EChartsWrapper = ({ className, ...props }: Props) => {
   const renderChart = useCallback(() => {
     reloadInstance()
   }, [props.options]);
+
+  useEffect(() => {
+    if(instance.current){
+      instance.current.resize()
+    }
+  }, [width])
 
   return (
     <div ref={renderChart} id={props.id} className={`w-full ${className}`}></div>
