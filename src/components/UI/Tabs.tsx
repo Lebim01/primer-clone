@@ -32,9 +32,10 @@ type Props = {
     children: ReactNode;
   }[];
   activeTabIndex?: number;
+  className?: string;
 }
 
-const Tabs = ({ activeTabIndex = 0, ...props }: Props) => {
+const Tabs = ({ activeTabIndex = 0, className = "", ...props }: Props) => {
   const [[activeTab, direction], setActiveTab] = useState([activeTabIndex, 0])
 
   const onClickTab = (index: number) => {
@@ -44,9 +45,9 @@ const Tabs = ({ activeTabIndex = 0, ...props }: Props) => {
 
   return (
     <motion.div layout className="tabs flex h-full w-full flex-col gap-4">
-      <div className="flex gap-3">
+      <div className={`flex gap-3 ${className}`}>
         {props.tabs.map((tab, index) => 
-          <span key={index} onClick={() => onClickTab(index)} className={`${activeTab == index ? "font-bold underline decoration-2" : "text-neutral-500"} tab-link underline-offset-8 hover:cursor-pointer hover:text-black hover:underline`}>
+          <span key={index} onClick={() => onClickTab(index)} className={`${activeTab == index ? "font-bold underline decoration-2" : "text-neutral-500"} tab-link underline-offset-4 hover:cursor-pointer hover:text-black hover:underline`}>
             {tab.label}
           </span>
         )}

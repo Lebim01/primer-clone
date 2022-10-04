@@ -6,7 +6,6 @@ export const primerMenu: IMenuItem[] = [
     icon: <BsFillGrid1X2Fill />,
     name: "Snapshot",
     path: "/snapshot",
-    locked: true
   },
   {
     icon: <BsPlusLg />,
