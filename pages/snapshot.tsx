@@ -143,6 +143,7 @@ const Snapshot = () => {
       <div className="flex h-96 flex-col gap-4 overflow-hidden rounded bg-gray-100/50 p-6 shadow">
         <span className="text-xl">Declines</span>
         <Tabs 
+          containerClassName="justify-between"
           className="gap-5 border-b"
           tabs={[
             {
@@ -150,7 +151,7 @@ const Snapshot = () => {
               children: (
                 <EChartsWrapper 
                   id="chart-total-declines" 
-                  className="h-60"
+                  className="mt-auto h-60"
                   options={{
                     series: [
                       {
@@ -270,7 +271,7 @@ const Snapshot = () => {
         <span className="text-xl">Authorizations</span>
         <EChartsWrapper 
           id="chart-authorization" 
-          className="h-full"
+          className="mt-auto h-60"
           options={{
             series: [
               {
@@ -350,7 +351,7 @@ const Snapshot = () => {
         <span className="text-xl">Conversions</span>
         <EChartsWrapper 
           id="chart-conversions" 
-          className="h-full"
+          className="mt-auto h-60"
           options={{
             series: [
               {
