@@ -4,6 +4,8 @@ import LineChart from "@src/components/UI/ECharts/Line"
 import { randomNumber } from "@src/utils/number"
 import EChartsWrapper from "@src/components/UI/ECharts/Wrapper"
 import Tabs from "@src/components/UI/Tabs"
+import { useEffect } from "react"
+import { useHeaderContext } from "@src/components/HeaderBreadcrumb/header.context"
 
 const TabItem = ({ title, percent, diff, icon }: any) => (
   <div className="flex items-center gap-2 border-b pb-3 text-xs">
@@ -18,6 +20,12 @@ const TabItem = ({ title, percent, diff, icon }: any) => (
 )
 
 const Snapshot = () => {
+  const { setActionButtons } = useHeaderContext()
+
+  useEffect(() => {
+    setActionButtons(<></>)
+  }, [])
+
   return (
     <div className="grid h-full w-full grid-cols-1 gap-8 p-10 lg:grid-cols-3" style={{ gridTemplateRows: "max-content" }}>
 
