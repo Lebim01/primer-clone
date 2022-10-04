@@ -60,7 +60,7 @@ const WorkflowBuildContextProvider = (props: Props) => {
 
   useEffect(() => {
     setActionButtons(
-      <div className="flex gap-3">
+      <>
         <button title="Open tour" 
           onClick={() => {
             setCurrentStep(0)
@@ -72,7 +72,7 @@ const WorkflowBuildContextProvider = (props: Props) => {
         <button className="btn-primary" onClick={publish}>
           Publish
         </button>
-      </div>
+      </>
     )
   }, [])
 

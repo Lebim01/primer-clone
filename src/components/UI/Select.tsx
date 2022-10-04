@@ -26,7 +26,7 @@ const Select = ({ style: { width = "w-full" }, options = [], className = "", ...
   return (
     <div ref={ref} className={`relative ${width} ${className}`}>
       <div 
-        className={`select-input text-selection-none flex w-full items-center rounded border p-2 text-sm hover:cursor-pointer hover:bg-hover-card`} 
+        className={`select-input text-selection-none flex w-full items-center rounded border p-2 text-sm hover:cursor-pointer hover:bg-hover-card dark:bg-gray-600 dark:hover:bg-gray-500`} 
         onClick={() => openSelect(selectedItem, ref, options, selectValue)}
       >
         <div className="flex-1">
@@ -105,7 +105,7 @@ export const SelectContextProvider = ({ children }: { children: ReactNode }) => 
 
       {open && rects && openedSelect?.current && document.body.contains(openedSelect?.current) &&
         <div 
-          className="select-values absolute z-10 flex flex-col gap-1 rounded border bg-white shadow-md"
+          className="select-values absolute z-10 flex flex-col gap-1 rounded border bg-white shadow-md dark:bg-gray-600"
           style={{
             top: rects.top + rects.height + 5,
             left: rects.left,
@@ -115,7 +115,7 @@ export const SelectContextProvider = ({ children }: { children: ReactNode }) => 
           {options.map((opt) => (
             <div 
               key={opt.value} 
-              className={`p-2 hover:cursor-pointer ${selectedItem?.value == opt.value ? "bg-primary-thin text-white" : "hover:bg-hover-card"}`} 
+              className={`p-2 hover:cursor-pointer ${selectedItem?.value == opt.value ? "bg-primary-thin text-white" : "hover:bg-hover-card dark:hover:bg-gray-500"}`} 
               onClick={() => {
                 openedSelectCallback.current(opt)
                 closeSelect()

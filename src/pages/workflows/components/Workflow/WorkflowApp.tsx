@@ -12,7 +12,7 @@ const WorkflowApp = (props: Props) => {
       initial={{ opacity: 0 }} 
       exit={{ opacity: 0 }}
       layout
-      className="flex flex-col gap-4 rounded border p-4"
+      className="flex flex-col gap-4 rounded border p-4 dark:border-zinc-500 dark:bg-gray-600/30"
     >
       <div className="flex items-center justify-center gap-2 text-center">
         <img src={props.data.icon} className="inline-block h-4 w-4" />

@@ -28,7 +28,13 @@ const ModalContextProvider = (props: Props) => {
       return [...modals, {
         ...modalProps,
         uuid: modaluuid,
-        onClose: () => closeModal(modaluuid),
+        closeOnSuccess: () => {
+          closeModal(modaluuid)
+        },
+        onClose: () => {
+          modalProps.onClose && modalProps.onClose()
+          closeModal(modaluuid)
+        },
       }]
     })
   }
@@ -56,10 +62,12 @@ const ModalContextProvider = (props: Props) => {
         showModal
       }}
     >
-      {props.children}
+      <div className={modals.length > 0 ? "blur-xs" : ""}>
+        {props.children}
+      </div>
       {modals.length > 0 &&
         <motion.div 
-          className="modal-fade absolute left-0 top-0 z-10 flex h-full w-full items-center justify-center bg-gray-800/50"
+          className="modal-fade absolute left-0 top-0 z-10 flex h-full w-full items-center justify-center bg-gray-800/50 dark:bg-gray-300/20"
         >
           <AnimatePresence>
             {modals.map((modal) => 

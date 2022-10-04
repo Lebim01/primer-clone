@@ -1,12 +1,12 @@
 const ModalAuthorizePayment = (props: ModalProps) => {
 
   const submit = () => {
-    props.onClose()
+    props.closeOnSuccess()
     props.onSave({})
   }
   
   return (
-    <div className="flex w-[350px] flex-col p-3">
+    <div className="mt-2 flex w-[350px] flex-col rounded bg-white p-3 text-black">
       <div className="flex items-center justify-between rounded border p-2">
         <div><img className="w-18 h-10" src="/images/visa.png" /></div>
         <div><img className="h-16 w-16" src="/images/sns.png" /></div>

@@ -7,7 +7,7 @@ const CheckoutSideMenu = () => {
   const [open, setOpen] = useState(true)
 
   return (
-    <div className={`min-w-max border-r border-gray-200 bg-white ${open ? "w-[320px]" : "w-[50px]"} flex flex-col items-center gap-4 overflow-auto p-4 transition-width`}>
+    <div className={`min-w-max border-r border-gray-200 bg-white ${open ? "w-[320px]" : "w-[50px]"} flex flex-col items-center gap-4 overflow-auto p-4 transition-width dark:bg-gray-600/30`}>
       <Tabs
         tabs={[
           {

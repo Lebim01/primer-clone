@@ -8,6 +8,7 @@ type Props = {
   className?: string;
   readOnly?: boolean;
   onClose?: () => void;
+  closeOnSuccess?: () => void;
 }
 
 const CheckoutForm = ({ className = "", ...props }: Props) => {
@@ -24,15 +25,18 @@ const CheckoutForm = ({ className = "", ...props }: Props) => {
           setStatus("success")
 
           setTimeout(() => {
-            props.onClose && props.onClose()
+            props.closeOnSuccess && props.closeOnSuccess()
           }, 1200)
         }, 1500)
+      },
+      onClose: () => {
+        setStatus(null)
       }
     })
   }
 
   return (
-    <motion.div className={`checkout w-[350px] bg-white p-8 ${className}`}>
+    <motion.div className={`checkout w-[350px] bg-white p-8 ${className} rounded dark:text-black`}>
       <AnimatePresence>
         {status == null &&
           <motion.div className="flex flex-col gap-2" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>

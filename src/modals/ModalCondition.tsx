@@ -102,7 +102,7 @@ const ModalCondition = (props: ModalProps) => {
     <div className="flex w-[600px] flex-col p-3">
       <div className="flex items-center">
         <div className="flex flex-1 flex-col">
-          <span className="text-lg text-black">Select Condition type(s)</span>
+          <span className="text-lg text-black dark:text-white">Select Condition type(s)</span>
         </div>
         <div>
           <button className="btn-primary" 

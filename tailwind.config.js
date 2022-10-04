@@ -6,6 +6,7 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       fontSize: {
@@ -15,12 +16,35 @@ module.exports = {
       colors: {
         primary: "#362ff9",
         "primary-thin": "#8682fb",
-        "hover-card": "#f5f5f5"
+        "hover-card": "#f5f5f5",
+        "dark-card": "rgba(var(--color-gray-600), 0.3)"
       },
       transitionProperty: {
         'width': 'width'
       },
+      blur: {
+        'xs': "1px"
+      }
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addBase, theme }) {
+      function extractColorVars(colorObj, colorGroup = '') {
+        return Object.keys(colorObj).reduce((vars, colorKey) => {
+          const value = colorObj[colorKey];
+
+          const newVars =
+            typeof value === 'string'
+              ? { [`--color${colorGroup}-${colorKey}`]: value }
+              : extractColorVars(value, `-${colorKey}`);
+
+          return { ...vars, ...newVars };
+        }, {});
+      }
+
+      addBase({
+        ':root': extractColorVars(theme('colors')),
+      });
+    },
+  ],
 }

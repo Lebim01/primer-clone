@@ -9,7 +9,7 @@ type ToggleItemProps = {
 
 const ToggleItem = (props: ToggleItemProps) => {
   return (
-    <div className="toggle-payment-method flex items-center gap-2 rounded border p-3">
+    <div className="toggle-payment-method flex items-center gap-2 rounded border p-3 dark:border-zinc-500">
       <div>
         <img className="h-8 w-8" src={props.icon} />
       </div>

@@ -13,7 +13,7 @@ const TabItem = ({ title, percent, diff, icon }: any) => (
     <span className="font-bold">
       {percent}%
     </span>
-    <div className="flex items-center gap-1 rounded bg-gray-200 px-1 text-xs">
+    <div className="flex items-center gap-1 rounded bg-gray-200 px-1 text-xs dark:bg-gray-700">
       {icon} {diff}%
     </div>
   </div>
@@ -71,7 +71,7 @@ const Snapshot = () => {
         </div>
       </div>
 
-      <div className="flex h-96 flex-col rounded bg-gray-100/50 shadow lg:col-span-2">
+      <div className="flex h-96 flex-col rounded bg-gray-100/50 shadow dark:bg-gray-600/30 dark:text-neutral-300 dark:shadow-gray-800 lg:col-span-2">
         <div className="flex px-4 pt-4">
           <div className="flex-1">
             <span className="font-semibold">Daily sales</span>
@@ -140,7 +140,7 @@ const Snapshot = () => {
         />
       </div>
 
-      <div className="flex h-96 flex-col gap-4 overflow-hidden rounded bg-gray-100/50 p-6 shadow">
+      <div className="flex h-96 flex-col gap-4 overflow-hidden rounded bg-gray-100/50 p-6 shadow dark:bg-gray-600/30 dark:text-neutral-300 dark:shadow-gray-800">
         <span className="text-xl">Declines</span>
         <Tabs 
           containerClassName="justify-between"
@@ -260,6 +260,12 @@ const Snapshot = () => {
                     diff={4}
                     icon={<BsFillCaretUpFill className="text-green-500" />}
                   />
+                  <TabItem
+                    title="The card isn't activated"
+                    percent={1}
+                    diff={1}
+                    icon={<BsFillCaretUpFill className="text-green-500" />}
+                  />
                 </div>
               )
             },
@@ -267,7 +273,7 @@ const Snapshot = () => {
         />
       </div>
 
-      <div className="flex h-96 flex-col gap-4 rounded bg-gray-100/50 p-6 shadow">
+      <div className="flex h-96 flex-col gap-4 rounded bg-gray-100/50 p-6 shadow dark:bg-gray-600/30 dark:text-neutral-300 dark:shadow-gray-800">
         <span className="text-xl">Authorizations</span>
         <EChartsWrapper 
           id="chart-authorization" 
@@ -347,7 +353,7 @@ const Snapshot = () => {
         />
       </div>
 
-      <div className="flex h-96 flex-col gap-4 rounded bg-gray-100/50 p-6 shadow">
+      <div className="flex h-96 flex-col gap-4 rounded bg-gray-100/50 p-6 shadow dark:bg-gray-600/30 dark:text-neutral-300 dark:shadow-gray-800">
         <span className="text-xl">Conversions</span>
         <EChartsWrapper 
           id="chart-conversions" 

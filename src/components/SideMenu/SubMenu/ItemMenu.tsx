@@ -11,7 +11,7 @@ const ItemMenu = (props: IMenuItem) => {
 
   return (
     <Link href={props.locked ? "#" : props.path}>
-      <div className={`text-selection-none flex items-center gap-4 rounded px-4 py-1 font-medium ${props.locked ? "" : "hover:cursor-pointer hover:bg-hover-card hover:text-black"} ${isActive ? "border-r-4 border-primary text-black" : "text-neutral-400"} menu-item transition-all`}>
+      <div className={`text-selection-none flex items-center gap-4 rounded px-4 py-1 font-medium ${props.locked ? "" : "hover:cursor-pointer hover:bg-hover-card hover:text-black dark:hover:bg-stone-600 dark:hover:text-white"} ${isActive ? "border-r-4 border-primary text-black dark:text-white" : "text-neutral-400"} menu-item transition-all`}>
         <span className={collapse ? "text-2xl" : ""}>{props.icon}</span>
         {!collapse && <span className="flex-1">{props.name}</span>}
         {props.locked && <BsLockFill size={8} />}

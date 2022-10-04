@@ -9,9 +9,9 @@ const SideMenu = () => {
   const collapse = useCollapse()
 
   return (
-    <div className={`min-h-full ${collapse ? "w-[80px]" : "w-[250px]"} border-r-2 border-gray-100 py-8 transition-width`}>
+    <div className={`min-h-full ${collapse ? "w-[80px]" : "w-[250px]"} border-r-2 border-gray-100 py-8 transition-width dark:border-r dark:border-zinc-500`}>
       <div className="mb-8 px-4">
-        <img src={"/logo.jfif"} className="h-[60px] object-contain" />
+        <img src={"/logo.svg"} className="h-[50px] object-contain" />
       </div>
 
       <SubMenu 

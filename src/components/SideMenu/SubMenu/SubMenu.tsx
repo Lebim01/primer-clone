@@ -11,7 +11,7 @@ const SubMenu = (props: Props) => {
 
   return (
     <div className={collapse ? "flex justify-center" : "px-4"}>
-      {!collapse && <div className="mb-2 text-xxs font-bold">{props.title}</div>}
+      {!collapse && <div className="mb-2 text-xxs font-bold dark:text-neutral-300">{props.title}</div>}
       <div className={`flex flex-col ${collapse ? "gap-y-6" : "gap-y-2"}`}>
         {props.menus.map((item, index) => 
           <ItemMenu {...item} key={index} />

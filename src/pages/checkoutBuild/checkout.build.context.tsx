@@ -50,7 +50,7 @@ const CheckoutBuildContextProvider = (props: Props) => {
 
   useEffect(() => {
     setActionButtons(
-      <div className="flex gap-3">
+      <>
         <button title="Open tour" 
           onClick={() => {
             setCurrentStep(0)
@@ -65,7 +65,7 @@ const CheckoutBuildContextProvider = (props: Props) => {
         <button className="btn-primary" onClick={publish}>
           Publish
         </button>
-      </div>
+      </>
     )
   }, [])
   

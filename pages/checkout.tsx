@@ -60,7 +60,7 @@ const Checkout = () => {
   return (
     <div className="flex h-full w-full">
       <CheckoutSideMenu />
-      <div className="flex w-full items-center justify-center bg-neutral-200">
+      <div className="flex w-full items-center justify-center bg-neutral-200 dark:bg-gray-200/20">
         <CheckoutForm activeMethods={activeMethods} className="rounded-lg border shadow" readOnly />
       </div>
     </div>

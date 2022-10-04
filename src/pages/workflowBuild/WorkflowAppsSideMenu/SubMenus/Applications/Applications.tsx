@@ -19,11 +19,11 @@ const TriggerAction = ({ data }: { data: IAppMethodFull }) => {
 
   return (
     <div className="app-trigger-action relative pr-1" onClick={() => addNewNode(data)}>
-      <div className="flex flex-col rounded-md border py-2 px-4 transition-all hover:cursor-pointer hover:bg-hover-card">
-        <span className="text-xxs text-neutral-500">PAYMENTS</span>
+      <div className="flex flex-col rounded-md border py-2 px-4 transition-all hover:cursor-pointer hover:bg-hover-card dark:border-zinc-500 dark:hover:bg-gray-600">
+        <span className="text-xxs text-neutral-500 dark:text-neutral-300">PAYMENTS</span>
         <span className="text-sm font-bold">{data.name}</span>
       </div>
-      <div className="absolute bottom-2 -right-1 flex h-5 w-5 items-center justify-center rounded-full border-r bg-white">
+      <div className="absolute bottom-2 -right-1 flex h-5 w-5 items-center justify-center rounded-full border-r bg-white dark:bg-gray-600">
         <BsArrowRightShort />
       </div>
     </div>
@@ -34,8 +34,8 @@ const CollapsableItem = (props: CollapsableItemProps) => {
   const [open, setOpen] = useState(false)
 
   return (
-    <div className={`text-selection-none app-trigger flex w-full flex-col rounded-md border`}>
-      <div className={`flex items-center gap-2 p-3 text-xs hover:cursor-pointer hover:bg-hover-card`} onClick={() => setOpen(s => !s)} data-is-open={open}>
+    <div className={`text-selection-none app-trigger flex w-full flex-col rounded-md border dark:border-zinc-500`}>
+      <div className={`flex items-center gap-2 p-3 text-xs hover:cursor-pointer hover:bg-hover-card dark:hover:bg-gray-600`} onClick={() => setOpen(s => !s)} data-is-open={open}>
         {props.icon}
         <div className="flex flex-1 flex-wrap">
           {props.body}
@@ -93,7 +93,7 @@ const Applications = () => {
     <div className="w-full">
       <h3 className="font-bold">Applications</h3>
       <div className="mt-4 flex w-full flex-col gap-4">
-        <div className="mb-2 flex w-full gap-3 rounded-md border px-2 py-3 text-neutral-500">
+        <div className="mb-2 flex w-full gap-3 rounded-md border px-2 py-3 text-neutral-500 dark:border-zinc-500">
           <BiFilterAlt />
           <h3 className="flex-1 text-sm">Filter by categories</h3>
           

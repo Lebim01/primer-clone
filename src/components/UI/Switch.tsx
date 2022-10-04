@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { ReactNode, useState } from "react"
 import { motion, useUnmountEffect } from "framer-motion"
 
 const spring = {
@@ -10,6 +10,8 @@ const spring = {
 type Props = {
   active: boolean;
   onChange?: (active: boolean) => void;
+  leftIcon?: ReactNode;
+  rightIcon?: ReactNode;
 }
 
 const Switch = (props: Props) => {
@@ -24,8 +26,12 @@ const Switch = (props: Props) => {
   };
 
   return (
-    <div className="switch" data-is-on={isOn} onClick={toggleSwitch}>
-      <motion.div className="handle" layout transition={spring} />
+    <div className="flex flex-nowrap items-center gap-1">
+      {props.leftIcon}
+      <div className="switch" data-is-on={isOn} onClick={toggleSwitch}>
+        <motion.div className="handle" layout transition={spring} />
+      </div>
+      {props.rightIcon}
     </div>
   );
 }
