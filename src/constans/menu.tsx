@@ -1,5 +1,6 @@
 import { BsFillGrid1X2Fill, BsCode, BsFolderCheck, BsBarChart, BsWallet, BsCart, BsPlusLg, BsGift, BsBook, BsGearFill, BsPerson } from "react-icons/bs"
 import { BiNetworkChart } from "react-icons/bi"
+import { IoIosGitNetwork } from "react-icons/io"
 
 export const primerMenu: IMenuItem[] = [
   {
@@ -17,6 +18,11 @@ export const primerMenu: IMenuItem[] = [
     icon: <BiNetworkChart />,
     name: "Workflows",
     path: "/workflows"
+  },
+  {
+    icon: <IoIosGitNetwork />,
+    name: "Routes",
+    path: "/routes"
   },
   {
     icon: <BsCart />,

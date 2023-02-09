@@ -12,6 +12,9 @@ import { useRouter } from 'next/router';
 import { StepType, TourProvider } from '@reactour/tour';
 import { SelectContextProvider } from '@src/components/UI/Select';
 import "@utils/prototypes"
+import { Lato } from '@next/font/google'
+
+const font = Lato({ weight: ["100", "300", "400", "700", "900"],  })
 
 axios.defaults.baseURL = process.env.HOST_API
 
@@ -31,34 +34,36 @@ function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
 
   return (
-    <TourProvider 
-      steps={steps} 
-      beforeClose={(c) => { 
-        localStorage.setItem(WELCOME_TOUR, "1"); 
-      }}
-    >
-      <SWRConfig
-        value={{
-          revalidateOnFocus: false,
-          revalidateOnReconnect: false,
-          refreshWhenOffline: false,
-          refreshWhenHidden: false,
-          refreshInterval: 0,
+    <main className={font.className}>
+      <TourProvider 
+        steps={steps} 
+        beforeClose={(c) => { 
+          localStorage.setItem(WELCOME_TOUR, "1"); 
         }}
       >
-        <SelectContextProvider>
-          <ModalContextProvider>
-            <HeaderContextProvider>
-              <Layout>
-                <LayoutBody>
-                  <Component {...pageProps} />
-                </LayoutBody>
-              </Layout>
-            </HeaderContextProvider>
-          </ModalContextProvider>
-        </SelectContextProvider>
-      </SWRConfig>
-    </TourProvider>
+        <SWRConfig
+          value={{
+            revalidateOnFocus: false,
+            revalidateOnReconnect: false,
+            refreshWhenOffline: false,
+            refreshWhenHidden: false,
+            refreshInterval: 0,
+          }}
+        >
+          <SelectContextProvider>
+            <ModalContextProvider>
+              <HeaderContextProvider>
+                <Layout>
+                  <LayoutBody>
+                    <Component {...pageProps} />
+                  </LayoutBody>
+                </Layout>
+              </HeaderContextProvider>
+            </ModalContextProvider>
+          </SelectContextProvider>
+        </SWRConfig>
+      </TourProvider>
+    </main>
   )
 }
 

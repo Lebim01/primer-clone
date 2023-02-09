@@ -42,12 +42,6 @@ const HeaderBreadcrumb = () => {
       </div>
       <motion.div>
         <div className="flex gap-3">
-          <Switch 
-            active={false} 
-            onChange={toggleDark} 
-            leftIcon={<BsSun />}
-            rightIcon={<BsMoonFill />}
-          />
           {actionButtons}
         </div>
       </motion.div>

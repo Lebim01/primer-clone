@@ -8,6 +8,12 @@ module.exports = {
   ],
   darkMode: 'class',
   theme: {
+    fontWeight: {
+      normal: '300',
+      medium: '400',
+      semibold: '600',
+      bold: '700',
+    },
     extend: {
       fontSize: {
         'xxs': '.60rem',

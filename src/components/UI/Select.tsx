@@ -1,5 +1,5 @@
 import { BsChevronDown } from "react-icons/bs";
-import { useState, useRef, useMemo, useEffect, createContext, ReactNode, useContext } from "react"
+import { useState, useRef, useMemo, createContext, ReactNode, useContext } from "react"
 import { useOutsideAlerter } from "@src/hooks/useOutsideAlerter";
 
 type Props = {

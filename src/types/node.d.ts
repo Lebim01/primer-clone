@@ -14,3 +14,5 @@ type NodeProps = {
 }
 
 type NodeType = "condition" | "createPayment" | "authorizeUser" | "authorizePayment"
+
+type RoutesNodeType = "newCondition" | "createCondition" | "condition" | "continueNode" | "nodeProcessor";
