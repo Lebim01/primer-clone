@@ -20,18 +20,16 @@ const WorkflowCheckout = (props: Props) => {
         <span>{props.data.name}</span>
       </div>
       <Link href={`/workflows/[uuid]`} as={`/workflows/${props.data.workflow_uuid}`} shallow>
-        <a>
-          <div className="dark:border-zinc:500 flex w-[250px] rounded border p-2 hover:cursor-pointer hover:bg-hover-card dark:hover:bg-gray-600">
-            <div className="flex flex-1 flex-col">
-              <span className="text-xs text-neutral-500 dark:text-neutral-300">CHECKOUT</span>
-              <span className="text-sm">{props.data.action}</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xxs text-neutral-500 dark:text-neutral-300">CONDITION</span>
-              <span></span>
-            </div>
+        <div className="dark:border-zinc:500 flex w-[250px] rounded border p-2 hover:cursor-pointer hover:bg-hover-card dark:hover:bg-gray-600">
+          <div className="flex flex-1 flex-col">
+            <span className="text-xs text-neutral-500 dark:text-neutral-300">CHECKOUT</span>
+            <span className="text-sm">{props.data.action}</span>
           </div>
-        </a>
+          <div className="flex flex-col">
+            <span className="text-xxs text-neutral-500 dark:text-neutral-300">CONDITION</span>
+            <span></span>
+          </div>
+        </div>
       </Link>
       <div className="flex border-t border-gray-300 px-2 pt-3">
         <div className="flex gap-2">
@@ -45,10 +43,8 @@ const WorkflowCheckout = (props: Props) => {
         </div>
       </div>
       <div className="flex justify-end">
-        <Link href="#">
-          <a className="flex items-center gap-1 text-xs text-primary-thin">
-            1 Draft <BsArrowRight />
-          </a>
+        <Link className="flex items-center gap-1 text-xs text-primary-thin" href="#">
+          1 Draft <BsArrowRight />
         </Link>
       </div>
     </motion.div>

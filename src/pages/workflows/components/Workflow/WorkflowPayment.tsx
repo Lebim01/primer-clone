@@ -45,10 +45,8 @@ const WorkflowPayment = (props: Props) => {
         </div>
       </div>
       <div className="flex justify-end">
-        <Link href="#">
-          <a className="flex items-center gap-1 text-xs text-primary-thin">
-            1 Draft <BsArrowRight />
-          </a>
+        <Link className="flex items-center gap-1 text-xs text-primary-thin" href="#">
+          1 Draft <BsArrowRight />
         </Link>
       </div>
     </motion.div>

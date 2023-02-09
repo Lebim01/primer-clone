@@ -11,6 +11,7 @@ import ModalContextProvider from '@src/context/modal.context';
 import { useRouter } from 'next/router';
 import { StepType, TourProvider } from '@reactour/tour';
 import { SelectContextProvider } from '@src/components/UI/Select';
+import "@utils/prototypes"
 
 axios.defaults.baseURL = process.env.HOST_API
 

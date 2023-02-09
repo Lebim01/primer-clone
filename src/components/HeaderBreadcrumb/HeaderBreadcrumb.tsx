@@ -25,9 +25,7 @@ const HeaderBreadcrumb = () => {
     <motion.div layout className="header flex border-b p-6 dark:text-neutral-300">
       <div className="flex flex-1 items-center gap-3">
         <Link href="/workflows" className="hover:cursor-pointer">
-          <a>
-            <BsHouseDoor />
-          </a>
+          <BsHouseDoor />
         </Link>
         {"/"}
         {path.map((item, index) => {
@@ -35,9 +33,7 @@ const HeaderBreadcrumb = () => {
           return (
             <React.Fragment key={index}>
               <Link href={item.path} as={item.path}>
-                <a>
-                  <span className={`${isLast ? "text-black underline decoration-2 underline-offset-4 dark:text-white" : "text-neutral-500"} font-medium hover:cursor-pointer hover:text-black`}>{item.name}</span>
-                </a>
+                <span className={`${isLast ? "text-black underline decoration-2 underline-offset-4 dark:text-white" : "text-neutral-500"} font-medium hover:cursor-pointer hover:text-black`}>{item.name}</span>
               </Link>
               {!isLast && <span className="text-neutral-500">{'>'}</span>}
             </React.Fragment>
